@@ -1,0 +1,42 @@
+<!-- Fichier de description d'application Web -->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+         
+<!-- Description d'une servlet avec association à la classe Java. -->
+	<servlet>
+		<servlet-name>IndexServlet</servlet-name>
+		<servlet-class>web.IndexServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>listeClientsServlet</servlet-name>
+		<servlet-class>web.listeClientsServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>listeComptesServlet</servlet-name>
+		<servlet-class>web.listeComptesServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>virementsServlet</servlet-name>
+		<servlet-class>web.virementsServlet</servlet-class>
+	</servlet>
+	
+<!--  description du pattern d'url -->
+	<servlet-mapping>
+		<servlet-name>IndexServlet</servlet-name>
+		<url-pattern>/Authentification</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>listeClientsServlet</servlet-name>
+		<url-pattern>/listeClients</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>listeComptesServlet</servlet-name>
+		<url-pattern>/listeComptes</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>virementsServlet</servlet-name>
+		<url-pattern>/virements</url-pattern>
+	</servlet-mapping>
+
+	
+</web-app>
