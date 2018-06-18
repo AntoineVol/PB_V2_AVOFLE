@@ -78,7 +78,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:url value="/delete?id=" var="deleteUrl" />
+				<c:url value="/listeClients?idDeleted=" var="deleteUrl" />
 				<c:forEach var="client" items="${listClient}">
 					<tr>
 						<td>${client.id}</td>
@@ -93,8 +93,8 @@
 									<h7> <font style="font-variant: small-caps;">Liste
 										des comptes</font></h7>
 								</button></a></td>
-						<td><a href="${virementsUrl}"><button>
-									<h7> <font style="font-variant: small-caps;">Virements</font></h7>
+						<td><a href="${deleteUrl}${client.id}&action=suppressionClient"><button>
+									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
 								</button></a></td>
 
 					</tr>
