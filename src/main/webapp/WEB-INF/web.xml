@@ -32,7 +32,7 @@
 	<servlet-mapping>
 		<servlet-name>listeClientsServlet</servlet-name>
 		<url-pattern>/listeClients</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> 
 	<servlet-mapping>
 		<servlet-name>listeComptesServlet</servlet-name>
 		<url-pattern>/listeComptes</url-pattern>
