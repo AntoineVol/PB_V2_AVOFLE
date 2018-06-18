@@ -26,7 +26,7 @@ public interface IDao {
 	public boolean moneyWithdraw(int idCompte, double montant);
 	public boolean moneyPay(int idCompte, double montant); 
 	
-	public int checkConseilleId(String login, String password);
+	public boolean checkConseilleId(String login, String password);
 	public Conseille getConseilleByID(int id);
 
 	

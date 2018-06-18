@@ -27,7 +27,7 @@ public interface IService {
 	public List<CompteCourant> allCompteCourant();
 	public boolean transfer (int idComptePreleve, int idCompteCredite, double montant);
 	
-	public Conseille identifyConseille(String login, String password);
+	public boolean identifyConseille(String login, String password);
 	
 	
 	

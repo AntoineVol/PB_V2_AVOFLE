@@ -87,13 +87,13 @@ public class ServiceImpl implements IService {
 		return dao.allCompteCourant();
 	}
 
-	public Conseille identifyConseille(String login, String password) {
-		int idConseille;
+	public boolean identifyConseille(String login, String password) {
+		boolean idConseille;
 		idConseille = dao.checkConseilleId(login, password);
-		if (idConseille >= 0) {
-			return dao.getConseilleByID(idConseille);
+		if (idConseille == true) {
+			return true;
 		} else {
-			return null;
+			return false;
 		}
 	}
 

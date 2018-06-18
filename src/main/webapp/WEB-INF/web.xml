@@ -19,6 +19,10 @@
 		<servlet-name>virementsServlet</servlet-name>
 		<servlet-class>presentation.virementsServlet</servlet-class>
 	</servlet>
+		<servlet>
+		<servlet-name>AuthFailed</servlet-name>
+		<servlet-class>presentation.AuthFailed</servlet-class>
+	</servlet>
 	
 <!--  description du pattern d'url -->
 	<servlet-mapping>
@@ -36,6 +40,10 @@
 	<servlet-mapping>
 		<servlet-name>virementsServlet</servlet-name>
 		<url-pattern>/virements</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>AuthFailed</servlet-name>
+		<url-pattern>/AuthFailed</url-pattern>
 	</servlet-mapping>
 
 	<!-- Documentation pour les pages d'erreurs : https://docs.oracle.com/cd/E19316-01/819-3669/bnahi/index.html -->

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.ServiceImpl;
+
 public class IndexServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -17,5 +19,18 @@ public class IndexServlet extends HttpServlet{
 		this.getServletContext()
 		.getRequestDispatcher("/WEB-INF/views/index.jsp")
 		.forward(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ServiceImpl service = new ServiceImpl();
+		// Récupérer les paramètres 'login' et 'password de la page d'authentification.
+		String login = req.getParameter("login");
+		String password = req.getParameter("password");
+
+		if (service.identifyConseille(login, password)) {
+			resp.sendRedirect(this.getServletContext().getContextPath() + "/listeClients");
+		} else 
+			resp.sendRedirect(this.getServletContext().getContextPath() + "/AuthFailed");
 	}
 }

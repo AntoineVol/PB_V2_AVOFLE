@@ -422,7 +422,7 @@ public class DaoImpl implements IDao {
 			DbUtil.seDeconnecter(pstat, null, con);
 		}
 	}
-	public int checkConseilleId(String login, String password) {
+	public boolean checkConseilleId(String login, String password) {
 		PreparedStatement pstat = null;
 		Connection con = null;
 		ResultSet res = null;
@@ -436,9 +436,8 @@ public class DaoImpl implements IDao {
 			res = pstat.executeQuery();
 			con.commit();
 			if (res.next()) {
-				return res.getInt(1);
+				return true;
 			}
-			;
 			// TODO mututaliser les deux erreurs
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -452,7 +451,7 @@ public class DaoImpl implements IDao {
 		} finally {
 			DbUtil.seDeconnecter(pstat, res, con);
 		}
-		return -1;
+		return false;
 	}
 
 	public Conseille getConseilleByID(int id) {
