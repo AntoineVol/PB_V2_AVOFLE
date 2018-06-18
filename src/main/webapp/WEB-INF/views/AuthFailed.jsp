@@ -75,29 +75,23 @@
 				<div class="tab-content">
 					<div id="AuthConseiller" class="tab-pane fade in active">
 						<form class="form-horizontal" method="post">
-							<fieldset>
-								<!-- Form Name -->
-								<legend align="center">Connexion</legend>
-								<!-- Text input-->
-								<div class="form-group"  align="center">
-									<div class="input-group">
-										<div class="col-md-4 alert alert-danger" role="alert">
-											Erreur de login ou de Password !</div>
-									</div>
-								</div>
-								<div class="form-group">
-
-									<div class="input-group">
-										<label class="col-md-4 control-label" for="login">Login</label>
-										<div class="col-md-4">
-											<!-- <span class="input-group-addon">Login</span> -->
-											<input id="login" name="login" type="login"
-												placeholder="Login" class="form-control input-md"
-												pattern=".{3,}"> <small id="loginHelp"
-												class="form-text text-muted">Votre Login doit
-												contenir au moins 3 caractères </small>
-										</div>
-									</div>
+						<fieldset>
+							<!-- Form Name -->
+							<legend align="center">Connexion</legend>
+							<!-- Text input-->
+							<div class="form-group">
+							<div class="input -group">
+								  <div class="col-md-4 alert alert-danger" role="alert">
+									  Erreur de login ou de Password ! 
+								  </div>
+							</div>
+							<div class="form-group">
+								<div class="input -group">
+								  <label class="col-md-4 control-label" for="login">Login</label>  
+								  <div class="col-md-4">
+								  <!-- <span class="input-group-addon">Login</span> -->
+								  <input id="login" name="login" type="login" placeholder="Login" class="form-control input-md" pattern=".{3,}">
+								  <small id="loginHelp" class="form-text text-muted">Votre Login doit contenir au moins 3 caractères </small>
 								</div>
 								<!-- Password input-->
 								<div class="form-group">
