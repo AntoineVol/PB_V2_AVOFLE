@@ -22,8 +22,9 @@ public class listeComptesServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession maSession = request.getSession(true);
 		ServiceImpl service = new ServiceImpl();
-		List<CompteCourant> listCompteCourant = new ArrayList<CompteCourant>(service.allCompteCourantByIdClient(1));
-		List<CompteEpargne> listCompteEpargne = new ArrayList<CompteEpargne>(service.allCompteEpargneByIdClient(1));
+		String idClient = request.getParameter("idClient");
+		List<CompteCourant> listCompteCourant = new ArrayList<CompteCourant>(service.allCompteCourantByIdClient(Integer.parseInt(idClient)));
+		List<CompteEpargne> listCompteEpargne = new ArrayList<CompteEpargne>(service.allCompteEpargneByIdClient(Integer.parseInt(idClient)));
 		
 		maSession.setAttribute("listCompteCourant", listCompteCourant);
 		maSession.setAttribute("listCompteEpargne", listCompteEpargne);

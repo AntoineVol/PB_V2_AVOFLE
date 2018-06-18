@@ -392,6 +392,32 @@ public class DaoImpl implements IDao {
 		return listCpt;
 	}
 	
+	public void deleteCompteEpargne(int id) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "DELETE FROM comptesepargnes WHERE id=?";
+			pstat = con.prepareStatement(sql);
+			pstat.setInt(1, id);
+			pstat.executeUpdate();
+			con.commit();
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DbUtil.seDeconnecter(pstat, null, con);
+		}
+	}
+	
+	
 	public List<CompteEpargne> allCompteEpargneByClientId(int id){
 		PreparedStatement pstat = null;
 		Connection con = null;

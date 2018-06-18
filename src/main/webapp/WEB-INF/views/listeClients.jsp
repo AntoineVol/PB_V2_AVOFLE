@@ -24,7 +24,7 @@
 <body>
 	<!-- LISTE DES URLs -->
 	<c:url value="/listeClients" var="listeClientsUrl" />
-	<c:url value="/listeComptes" var="listeComptesUrl" />
+	<c:url value="/listeComptes?idClient=" var="listeComptesUrl" />
 	<c:url value="/virements" var="virementsUrl" />
 
 	<!-- Entête avec Logo -->
@@ -54,8 +54,7 @@
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
 		<a id="ListeClientColor" href="${listeClientsUrl}" class="col-sm-3">Liste
-			des Clients</a> <a href="${listeComptesUrl}" class="col-sm-3">Liste
-			des comptes</a> <a href="${virementsUrl}" class="col-sm-3">Virements
+			des Clients</a><a href="${virementsUrl}" class="col-sm-3">Virements
 			compte à compte</a>
 	</nav>
 
@@ -89,7 +88,7 @@
 						<td><a data-target="#Editer"><button>
 									<h7> <font style="font-variant: small-caps;">Edition</font></h7>
 								</button></a></td>
-						<td><a href="${listeComptesUrl}"><button>
+						<td><a href="${listeComptesUrl}${client.id}"><button>
 									<h7> <font style="font-variant: small-caps;">Liste
 										des comptes</font></h7>
 								</button></a></td>

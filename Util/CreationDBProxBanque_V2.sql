@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS clients (id int NOT NULL AUTO_INCREMENT, prenom varch
 CREATE TABLE IF NOT EXISTS comptescourants (id int NOT NULL AUTO_INCREMENT, solde decimal(7.2) NOT NULL,decouvert decimal(7.2) NOT NULL, id_client int NOT NULL, PRIMARY KEY(id));
 CREATE TABLE IF NOT EXISTS comptesepargnes (id int NOT NULL AUTO_INCREMENT, solde decimal(7.2) NOT NULL, taux decimal(3.2) NOT NULL, id_client int NOT NULL, PRIMARY KEY(id));
 -- Création des enregistrements
-INSERT INTO conseilles (prenom, nom, login, password) VALUES ("admin_prenom", "admin_nom", "admin", "admin");
+INSERT INTO conseilles (prenom, nom, login, password) VALUES ("Jeremy", "Masson", "admin", "admin");
 INSERT INTO clients (prenom,nom,mail,adresse,id_conseille) VALUES ("Mickael", "Kael", "mickael.kael@orange.fr", "25 rue des poiriers 75015 Paris",1);
 INSERT INTO clients (prenom,nom,mail,adresse,id_conseille) VALUES ("Edgar", "Grospiron", "edgar.grospiron", "13 av des pommier 74000 Annecy",1);
 INSERT INTO clients (prenom,nom,mail,adresse,id_conseille) VALUES ("Julie", "Gayet", "julie.gayet@gmail.com", "8 boulevard de l'Elysee 75001 Paris",1);

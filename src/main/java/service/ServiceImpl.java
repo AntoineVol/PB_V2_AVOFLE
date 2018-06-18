@@ -50,6 +50,14 @@ public class ServiceImpl implements IService {
 	}
 
 	public void deleteClient(int id) {
+		List<CompteCourant> listCompteCourant =new ArrayList<CompteCourant>(dao.allCompteCourantByClientId(id));
+		for(CompteCourant cpt :listCompteCourant) {
+			dao.deleteCompteCourant(cpt.getId());
+		}
+		List<CompteEpargne> listCompteEpargne =new ArrayList<CompteEpargne>(dao.allCompteEpargneByClientId(id));
+		for(CompteEpargne cpt :listCompteEpargne) {
+			dao.deleteCompteEpargne(cpt.getId());
+		}
 		dao.deleteClient(id);
 
 	}

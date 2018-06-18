@@ -24,6 +24,7 @@ public interface IDao {
 	public List<CompteCourant> allCompteCourant();
 	public List<CompteCourant> allCompteCourantByClientId(int id);
 	
+	public void deleteCompteEpargne(int id);
 	public List<CompteEpargne> allCompteEpargneByClientId(int id);
 	
 	public boolean moneyTransfer(int idComptePreleve, int idCompteCredite, double montant);
