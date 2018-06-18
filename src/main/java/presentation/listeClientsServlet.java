@@ -23,18 +23,11 @@ public class listeClientsServlet extends HttpServlet{
 		HttpSession maSession = request.getSession(true);
 		
 		ServiceImpl service = new ServiceImpl();
-		//List<Client> listClient = new ArrayList<Client>(service.allClient(1));
-		List<Client> listClient = new ArrayList<Client>();
-		Client c1 = new Client("Tom","Pouce","tom.pouce@gmail.com","52 rue du chemin 74589 Croisy");
-		listClient.add(c1);
-		Client monClient = new Client();
+		List<Client> listClient = new ArrayList<Client>(service.allClient(1));
 
 		maSession.setAttribute("listClient", listClient);
-		maSession.setAttribute("id", monClient.getId());
-		maSession.setAttribute("nom", monClient.getNom());
-		maSession.setAttribute("prenom", monClient.getPrenom());
-		maSession.setAttribute("tel", monClient.getMail());
-		maSession.setAttribute("adresse", monClient.getAdresse());
+
+		
 
 
 		

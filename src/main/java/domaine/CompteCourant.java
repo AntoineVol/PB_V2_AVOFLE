@@ -10,11 +10,6 @@ public class CompteCourant extends Compte {
 	 */
 	private double decouvert;
 
-	/**
-	 * Le constructeur d'un objet compteCourant d'un client.
-	 * @param solde du compteCourant
-	 * @param decouvert du compteCourant
-	 */
 	public CompteCourant() {
 		super();
 	}

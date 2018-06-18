@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public abstract class DbUtil {
+public  abstract class DbUtil {
 	public static Connection seConnecter() throws ClassNotFoundException, SQLException {
 		// TODO Créer la BDD est adapter le chemin dans l'adresse ci-dessous
-		String url = "jdbc:mysql://localhost/bdproxibanque";
+		String url = "jdbc:mysql://localhost/proxybanquev2_avofle";
 		String login = "root";
 		String password = "";
 		Connection con = null;

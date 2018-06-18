@@ -11,18 +11,14 @@ public interface IDao {
 	
 
 	public void createClient(Client clt);
-	public void addClient(int id_clt, int id_csl);
 	public void upClient(Client c);
 	public void deleteClient(int id);
-	public void removeClient(int id);
 	public Client getClientByID(int id);
 	public List<Client> allClient(int id_csl);
 	
 	public void createCompteCourant(CompteCourant cpt);
-	public void addCompteCourant(int id_cpt, int id_clt);
 	public void upCompteCourant(CompteCourant c);
 	public void deleteCompteCourant(int id);
-	public void removeCompteCourant(int id);
 	public CompteCourant getCompteCourantByID(int id);
 	public List<CompteCourant> allCompteCourant();
 	

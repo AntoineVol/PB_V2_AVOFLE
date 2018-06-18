@@ -1,5 +1,6 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.DaoImpl;
@@ -39,7 +40,7 @@ public class ServiceImpl implements IService {
 
 	public void createClient(Client c, Conseille csl) {
 		dao.createClient(c);
-		dao.addClient(c.getId(), csl.getId());
+
 	}
 
 	public void upClient(Client c) {
@@ -47,7 +48,6 @@ public class ServiceImpl implements IService {
 	}
 
 	public void deleteClient(int id) {
-		dao.removeClient(id);
 		dao.deleteClient(id);
 
 	}
@@ -57,14 +57,14 @@ public class ServiceImpl implements IService {
 	}
 
 	public List<Client> allClient(int idConseille) {
-		return dao.allClient(idConseille);
+		List<Client> listClient = new ArrayList<Client>(dao.allClient(idConseille));
+		return listClient;
 	}
 
 	public void createCompteCourant(CompteCourant cpt, Client clt) {
 		// TODO Recupérer un client avec les infos du front
 		// TODO Créer un compte à partir du front
 		dao.createCompteCourant(cpt);
-		dao.addCompteCourant(cpt.getId(), clt.getId());
 
 	}
 
@@ -74,7 +74,7 @@ public class ServiceImpl implements IService {
 	}
 
 	public void deleteCompteCourant(int id) {
-		dao.removeCompteCourant(id);
+
 		dao.deleteCompteCourant(id);
 
 	}

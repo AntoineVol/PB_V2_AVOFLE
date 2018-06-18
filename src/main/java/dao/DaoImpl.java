@@ -21,12 +21,13 @@ public class DaoImpl implements IDao {
 
 		try {
 			con = DbUtil.seConnecter();
-			String sql_clt = "INSERT INTO clients (prenom,nom,mail,adresse) VALUES (?,?,?,?)";
+			String sql_clt = "INSERT INTO clients (prenom,nom,mail,adresse,id_conseille) VALUES (?,?,?,?,?)";
 			pstat = con.prepareStatement(sql_clt);
 			pstat.setString(1, clt.getPrenom());
 			pstat.setString(2, clt.getNom());
 			pstat.setString(3, clt.getMail());
 			pstat.setString(4, clt.getAdresse());
+			pstat.setInt(5, 1);
 
 			pstat.executeUpdate();
 			con.commit();
@@ -46,33 +47,7 @@ public class DaoImpl implements IDao {
 
 	}
 
-	public void addClient(int id_clt, int id_csl) {
-		PreparedStatement pstat = null;
-		Connection con = null;
-
-		try {
-			con = DbUtil.seConnecter();
-			String sql_link = "INSERT INTO conseilles_clients (id_conseille, id_client) VALUES (?,?)";
-			pstat = con.prepareStatement(sql_link);
-			pstat.setInt(1, id_csl);
-			pstat.setInt(2, id_clt);
-
-			con.commit();
-			// TODO mututaliser les deux erreurs
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		} finally {
-			DbUtil.seDeconnecter(pstat, null, con);
-		}
-
-	}
+	
 
 	public void upClient(Client c) {
 		PreparedStatement pstat = null;
@@ -108,8 +83,6 @@ public class DaoImpl implements IDao {
 		PreparedStatement pstat = null;
 		Connection con = null;
 
-		removeClient(id_clt);
-
 		try {
 			con = DbUtil.seConnecter();
 			String sql = "DELETE FROM clients WHERE id=?";
@@ -134,32 +107,6 @@ public class DaoImpl implements IDao {
 
 	}
 
-	public void removeClient(int id) {
-		PreparedStatement pstat = null;
-		Connection con = null;
-
-		try {
-			con = DbUtil.seConnecter();
-			String sql = "DELETE FROM conseilles_clients WHERE id=?";
-			pstat = con.prepareStatement(sql);
-			pstat.setInt(1, id);
-			pstat.executeUpdate();
-			con.commit();
-			// TODO mututaliser les deux erreurs
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		} finally {
-			DbUtil.seDeconnecter(pstat, null, con);
-		}
-
-	}
 
 	public Client getClientByID(int id) {
 		PreparedStatement pstat = null;
@@ -207,9 +154,9 @@ public class DaoImpl implements IDao {
 
 		try {
 			con = DbUtil.seConnecter();
-			String sql = "SELECT * FROM conseilles_clients l JOIN clients c on l.id_client=c.id WHERE l.id_conseille =?";
+			String sql = "SELECT * FROM clients WHERE id_conseille =1";
 			pstat = con.prepareStatement(sql);
-			pstat.setInt(1, id_csl);
+			//pstat.setInt(1, id_csl);
 			res = pstat.executeQuery();
 			con.commit();
 
@@ -246,10 +193,11 @@ public class DaoImpl implements IDao {
 
 		try {
 			con = DbUtil.seConnecter();
-			String sql = "INSERT INTO comptescourants (solde,decouvert) VALUES (?,?)";
+			String sql = "INSERT INTO comptescourants (solde,decouvert,id_client) VALUES (?,?,?)";
 			pstat = con.prepareStatement(sql);
 			pstat.setDouble(1, cpt.getSolde());
 			pstat.setDouble(2, cpt.getDec());
+			pstat.setInt(2, 1); //FIXME changer le numéro client en dur
 			pstat.executeUpdate();
 			con.commit();
 			// TODO mututaliser les deux erreurs
@@ -268,33 +216,6 @@ public class DaoImpl implements IDao {
 
 	}
 
-	public void addCompteCourant(int id_cpt, int id_clt) {
-		PreparedStatement pstat = null;
-		Connection con = null;
-
-		try {
-			con = DbUtil.seConnecter();
-			String sql = "INSERT INTO clients_comptescourants (id_client,id_comptecourant) VALUES (?,?)";
-			pstat = con.prepareStatement(sql);
-			pstat.setInt(1, id_clt);
-			pstat.setInt(2, id_cpt);
-			pstat.executeUpdate();
-			con.commit();
-			// TODO mututaliser les deux erreurs
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		} finally {
-			DbUtil.seDeconnecter(pstat, null, con);
-		}
-
-	}
 
 	public void upCompteCourant(CompteCourant c) {
 		PreparedStatement pstat = null;
@@ -329,7 +250,6 @@ public class DaoImpl implements IDao {
 	public void deleteCompteCourant(int id) {
 		PreparedStatement pstat = null;
 		Connection con = null;
-		removeCompteCourant(id);
 		try {
 			con = DbUtil.seConnecter();
 			String sql = "DELETE FROM comptescourants WHERE id=?";
@@ -353,31 +273,6 @@ public class DaoImpl implements IDao {
 
 	}
 
-	public void removeCompteCourant(int id) {
-		PreparedStatement pstat = null;
-		Connection con = null;
-
-		try {
-			con = DbUtil.seConnecter();
-			String sql = "DELETE FROM clients_comptescourants WHERE id_comptecourant=?";
-			pstat = con.prepareStatement(sql);
-			pstat.setInt(1, id);
-			pstat.executeUpdate();
-			con.commit();
-			// TODO mututaliser les deux erreurs
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		} finally {
-			DbUtil.seDeconnecter(pstat, null, con);
-		}
-	}
 
 	public CompteCourant getCompteCourantByID(int id) {
 		PreparedStatement pstat = null;
