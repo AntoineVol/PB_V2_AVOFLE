@@ -26,10 +26,12 @@ public class AuthFailed extends HttpServlet{
 		// Récupérer les paramètres 'login' et 'password de la page d'authentification.
 		String login = req.getParameter("login");
 		String password = req.getParameter("password");
-
+		
 		if (service.identifyConseille(login, password)) {
 			resp.sendRedirect(this.getServletContext().getContextPath() + "/listeClients");
-		} else 
-			resp.sendRedirect(this.getServletContext().getContextPath() + "/AuthFailed");
+			req.getSession().setAttribute("Conseiller", login);
+		} else {resp.sendRedirect(this.getServletContext().getContextPath() + "/AuthFailed");
+				req.getSession().setAttribute("Conseiller", null);}
+		
 	}
 }
