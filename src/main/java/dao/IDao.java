@@ -4,6 +4,7 @@ import java.util.List;
 
 import domaine.Client;
 import domaine.CompteCourant;
+import domaine.CompteEpargne;
 import domaine.Conseille;
 
 public interface IDao {
@@ -21,6 +22,9 @@ public interface IDao {
 	public void deleteCompteCourant(int id);
 	public CompteCourant getCompteCourantByID(int id);
 	public List<CompteCourant> allCompteCourant();
+	public List<CompteCourant> allCompteCourantByClientId(int id);
+	
+	public List<CompteEpargne> allCompteEpargneByClientId(int id);
 	
 	public boolean moneyTransfer(int idComptePreleve, int idCompteCredite, double montant);
 	public boolean moneyWithdraw(int idCompte, double montant);
@@ -33,3 +37,4 @@ public interface IDao {
 	
 
 }
+

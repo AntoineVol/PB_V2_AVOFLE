@@ -11,6 +11,7 @@ import java.util.List;
 import domaine.Client;
 import domaine.Compte;
 import domaine.CompteCourant;
+import domaine.CompteEpargne;
 import domaine.Conseille;
 
 public class DaoImpl implements IDao {
@@ -196,7 +197,7 @@ public class DaoImpl implements IDao {
 			String sql = "INSERT INTO comptescourants (solde,decouvert,id_client) VALUES (?,?,?)";
 			pstat = con.prepareStatement(sql);
 			pstat.setDouble(1, cpt.getSolde());
-			pstat.setDouble(2, cpt.getDec());
+			pstat.setDouble(2, cpt.getDecouvert());
 			pstat.setInt(2, 1); //FIXME changer le numéro client en dur
 			pstat.executeUpdate();
 			con.commit();
@@ -226,7 +227,7 @@ public class DaoImpl implements IDao {
 			String sql = "UPDATE comptescourants SET solde=?,decouvert=? WHERE id=?";
 			pstat = con.prepareStatement(sql);
 			pstat.setDouble(1, c.getSolde());
-			pstat.setDouble(2, c.getDec());
+			pstat.setDouble(2, c.getDecouvert());
 			pstat.setInt(3, c.getId());
 
 			pstat.executeUpdate();
@@ -292,7 +293,7 @@ public class DaoImpl implements IDao {
 				cpt.setId(res.getInt(1));
 				cpt.setSolde(res.getDouble(2));
 				cpt.setDate(res.getString(3));
-				cpt.setDec(res.getDouble(4));
+				cpt.setDecouvert(res.getDouble(4));
 			}
 			// TODO mututaliser les deux erreurs
 		} catch (ClassNotFoundException e) {
@@ -309,6 +310,47 @@ public class DaoImpl implements IDao {
 			DbUtil.seDeconnecter(pstat, res, con);
 		}
 		return cpt;
+	}
+	
+	public List<CompteCourant> allCompteCourantByClientId(int id) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+		ResultSet res = null;
+		List<CompteCourant> listCpt = new ArrayList<CompteCourant>();
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "SELECT * FROM comptescourants WHERE id_client =?";
+			pstat = con.prepareStatement(sql);
+			pstat.setInt(1, id);
+			res = pstat.executeQuery();
+			con.commit();
+
+			while (res.next()) {
+				CompteCourant cpt = new CompteCourant();
+				cpt.setId(res.getInt(1));
+				cpt.setSolde(res.getDouble(2));
+				cpt.setDecouvert(res.getDouble(3));
+				listCpt.add(cpt);
+				return listCpt;
+			}
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return listCpt;
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+			return listCpt;
+		} finally {
+			DbUtil.seDeconnecter(pstat, res, con);
+		}
+		return listCpt;
+
 	}
 
 	public List<CompteCourant> allCompteCourant() {
@@ -329,7 +371,7 @@ public class DaoImpl implements IDao {
 				cpt.setId(res.getInt(1));
 				cpt.setSolde(res.getDouble(2));
 				cpt.setDate(res.getString(3));
-				cpt.setDec(res.getDouble(4));
+				cpt.setDecouvert(res.getDouble(4));
 				;
 				listCpt.add(cpt);
 			}
@@ -348,6 +390,48 @@ public class DaoImpl implements IDao {
 			DbUtil.seDeconnecter(stat, res, con);
 		}
 		return listCpt;
+	}
+	
+	public List<CompteEpargne> allCompteEpargneByClientId(int id){
+		PreparedStatement pstat = null;
+		Connection con = null;
+		ResultSet res = null;
+		List<CompteEpargne> listCpt = new ArrayList<CompteEpargne>();
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "SELECT * FROM comptesepargnes WHERE id_client =?";
+			pstat = con.prepareStatement(sql);
+			pstat.setInt(1, id);
+			res = pstat.executeQuery();
+			con.commit();
+
+			while (res.next()) {
+				CompteEpargne cpt = new CompteEpargne();
+				cpt.setId(res.getInt(1));
+				cpt.setSolde(res.getDouble(2));
+				cpt.setTaux(res.getDouble(3));
+				;
+				listCpt.add(cpt);
+				return listCpt;
+			}
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return listCpt;
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+			return listCpt;
+		} finally {
+			DbUtil.seDeconnecter(pstat, res, con);
+		}
+		return listCpt;
+
 	}
 	
 	public boolean moneyTransfer(int idComptePreleve, int idCompteCredite, double montant) {
@@ -491,3 +575,4 @@ public class DaoImpl implements IDao {
 	
 
 }
+

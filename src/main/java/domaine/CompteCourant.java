@@ -5,9 +5,7 @@ package domaine;
  * @version 1.0
  */
 public class CompteCourant extends Compte {
-	/**
-	 * Le d�couvert autoris� par la banque 
-	 */
+
 	private double decouvert;
 
 	public CompteCourant() {
@@ -19,11 +17,11 @@ public class CompteCourant extends Compte {
 		this.decouvert = dec;
 	}
 
-	public double getDec() {
+	public double getDecouvert() {
 		return decouvert;
 	}
 
-	public void setDec(double dec) {
+	public void setDecouvert(double dec) {
 		this.decouvert = dec;
 	}
 

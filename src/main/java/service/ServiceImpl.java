@@ -6,7 +6,9 @@ import java.util.List;
 import dao.DaoImpl;
 import dao.IDao;
 import domaine.Client;
+import domaine.Compte;
 import domaine.CompteCourant;
+import domaine.CompteEpargne;
 import domaine.Conseille;
 
 /**
@@ -105,5 +107,16 @@ public class ServiceImpl implements IService {
 			return false;
 		}
 	}
+	
+	public List<CompteCourant> allCompteCourantByIdClient(int id){
+		List<CompteCourant> listCompte = new ArrayList<CompteCourant>(dao.allCompteCourantByClientId(id));
+		return listCompte;
+	}
+	
+	public List<CompteEpargne> allCompteEpargneByIdClient(int id){
+		List<CompteEpargne> listCompte = new ArrayList<CompteEpargne>(dao.allCompteEpargneByClientId(id));
+		return listCompte;
+	}
 
 }
+

@@ -4,6 +4,7 @@ import java.util.List;
 
 import domaine.Client;
 import domaine.CompteCourant;
+import domaine.CompteEpargne;
 import domaine.Conseille;
 
 /**
@@ -27,6 +28,9 @@ public interface IService {
 	public List<CompteCourant> allCompteCourant();
 	public boolean transfer (int idComptePreleve, int idCompteCredite, double montant);
 	
+	public List<CompteCourant> allCompteCourantByIdClient(int id);
+	public List<CompteEpargne> allCompteEpargneByIdClient(int id);
+	
 	public boolean identifyConseille(String login, String password);
 	
 	
@@ -35,3 +39,4 @@ public interface IService {
 	
 
 }
+
