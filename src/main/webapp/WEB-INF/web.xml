@@ -24,7 +24,19 @@
 		<servlet-class>presentation.AuthFailed</servlet-class>
 	</servlet>
 	
-<!--  description du pattern d'url -->
+	<!-- Filtre d'URL -->
+	<filter>
+	<filter-name>FiltreAuthentification</filter-name>
+	<filter-class>presentation.AuthFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>FiltreAuthentification</filter-name>
+		<url-pattern>/listeClients</url-pattern>
+		<url-pattern>/listeComptes</url-pattern>
+		<url-pattern>/virements</url-pattern>
+	</filter-mapping>
+	
+	<!--  description du pattern d'url -->
 	<servlet-mapping>
 		<servlet-name>IndexServlet</servlet-name>
 		<url-pattern>/Authentification</url-pattern>
@@ -41,10 +53,11 @@
 		<servlet-name>virementsServlet</servlet-name>
 		<url-pattern>/virements</url-pattern>
 	</servlet-mapping>
-		<servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>AuthFailed</servlet-name>
 		<url-pattern>/AuthFailed</url-pattern>
 	</servlet-mapping>
+
 
 	<!-- Documentation pour les pages d'erreurs : https://docs.oracle.com/cd/E19316-01/819-3669/bnahi/index.html -->
 	<error-page>

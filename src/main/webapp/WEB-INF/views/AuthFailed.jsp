@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
-<%-- <%=request.getContextPath()%> --%>
+
+
 <title>ProxiBanque</title>
 <base href="/">
 <link rel="stylesheet"
@@ -43,7 +44,6 @@
 				</h1>
 			</div>
 
-			<!-- USERNAME A RECUPERER ET AFFICHER ${Conseiller.Nom} -->
 			<div class="Connexion col-md-2">
 				<a href="${listeClientsUrl}"><button class="btn">
 						<h5>
@@ -57,33 +57,35 @@
 	<!-- Texte d'intro -->
 	<section class="container">
 		<div>
-			<h1>
-				<b>ProxiBanque V2</b>
-			</h1>
+			<h1><b>ProxiBanque V2</b></h1>
 		</div>
-
+		
 		<!-- Table pour naviguer -->
 		<div name="tabCentrale" class="container">
 			<h2>Cher Conseiller de clientèle</h2>
 			<p>Veuillez vous authentifier</p>
 			<div name="TabComplete">
-				<ul name="InterTab" class="nav nav-tabs">
-					<li class="active" style="font-variant: small-caps;"><a
-						data-toggle="tab" href="#AuthConseiller"><b>Authentification</b></a></li>
-				</ul>
+			<ul name="InterTab" class="nav nav-tabs" >
+				<li class="active" style="font-variant: small-caps;"><a data-toggle="tab" href="#AuthConseiller"><b>Authentification</b></a></li>
+			</ul>
 
-				<div class="tab-content">
-					<div id="AuthConseiller" class="tab-pane fade in active">
+			<div class="tab-content">
+				<div id="AuthConseiller" class="tab-pane fade in active">
 						<form class="form-horizontal" method="post">
 						<fieldset>
 							<!-- Form Name -->
 							<legend align="center">Connexion</legend>
 							<!-- Text input-->
 							<div class="form-group">
-							<div class="input -group">
-								  <div class="col-md-4 alert alert-danger" role="alert">
-									  Erreur de login ou de Password ! 
-								  </div>
+								<div class="input -group">
+								  <label class="col-md-4"> </label>  
+								  <div class="col-md-4">
+								  	  <div class="alert alert-danger" role="alert">
+								  	  	Login ou Password erroné, veuillez vérifier vos paramètres d'identifications.
+								  	  </div>
+
+								</div>
+							  </div>
 							</div>
 							<div class="form-group">
 								<div class="input -group">
@@ -93,30 +95,27 @@
 								  <input id="login" name="login" type="login" placeholder="Login" class="form-control input-md" pattern=".{3,}">
 								  <small id="loginHelp" class="form-text text-muted">Votre Login doit contenir au moins 3 caractères </small>
 								</div>
-								<!-- Password input-->
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="password">Password</label>
-									<div class="col-md-4">
-										<input id="password" name="password" type="password"
-											placeholder="Password" class="form-control input-md"
-											pattern=".{4,}"> <small id="passwordHelp"
-											class="form-text text-muted">Votre Password doit
-											contenir au moins 4 caractères </small>
-									</div>
+							  </div>
+							</div>
+							<!-- Password input-->
+							<div class="form-group">
+							  <label class="col-md-4 control-label" for="password">Password</label>
+							  <div class="col-md-4">
+								<input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" pattern=".{4,}">
+								<small id="passwordHelp" class="form-text text-muted">Votre Password doit contenir au moins 4 caractères </small>
+							  </div>
+							</div>
+							<!-- Button -->
+							<div class="form-group" align="center">
+								<label class="col-md-4 control-label" for="connexion"> </label>
+								<div class="col-md-4 " align="center">
+									<button id="singlebutton" name="singlebutton" class="btn btn-primary">Se Connecter</button>
 								</div>
-								<!-- Button -->
-								<div class="form-group" align="center">
-									<label class="col-md-4 control-label" for="connexion">
-									</label>
-									<div class="col-md-4 " align="center">
-										<button id="singlebutton" name="singlebutton"
-											class="btn btn-primary">Se Connecter</button>
-									</div>
-								</div>
-							</fieldset>
+							</div>
+						</fieldset>
 						</form>
-					</div>
-				</div>
+				</div>	
+			</div>
 			</div>
 		</div>
 	</section>

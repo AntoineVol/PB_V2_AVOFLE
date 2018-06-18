@@ -30,8 +30,9 @@ public class IndexServlet extends HttpServlet{
 
 		if (service.identifyConseille(login, password)) {
 			resp.sendRedirect(this.getServletContext().getContextPath() + "/listeClients");
-			req.getSession().setAttribute("Conseiller", login);
+			req.getSession().setAttribute(AuthFilter.SESSION_AUTH, login);
+			
 		} else {resp.sendRedirect(this.getServletContext().getContextPath() + "/AuthFailed");
-				req.getSession().setAttribute("Conseiller", null);}
+				req.getSession().setAttribute(AuthFilter.SESSION_AUTH, null);}
 	}
 }
