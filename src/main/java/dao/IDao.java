@@ -17,7 +17,7 @@ public interface IDao {
 	public Client getClientByID(int id);
 	public List<Client> allClient(int id_csl);
 	
-	public void createCompteCourant(CompteCourant cpt);
+	public void createCompteCourant(CompteCourant cpt, Client clt);
 	public void upCompteCourant(CompteCourant c);
 	public void deleteCompteCourant(int id);
 	public CompteCourant getCompteCourantByID(int id);

@@ -188,7 +188,7 @@ public class DaoImpl implements IDao {
 		return listClt;
 	}
 
-	public void createCompteCourant(CompteCourant cpt) {
+	public void createCompteCourant(CompteCourant cpt, Client clt) {
 		PreparedStatement pstat = null;
 		Connection con = null;
 
@@ -198,7 +198,7 @@ public class DaoImpl implements IDao {
 			pstat = con.prepareStatement(sql);
 			pstat.setDouble(1, cpt.getSolde());
 			pstat.setDouble(2, cpt.getDecouvert());
-			pstat.setInt(2, 1); //FIXME changer le numéro client en dur
+			pstat.setInt(3, clt.getId());
 			pstat.executeUpdate();
 			con.commit();
 			// TODO mututaliser les deux erreurs
@@ -332,12 +332,12 @@ public class DaoImpl implements IDao {
 				cpt.setSolde(res.getDouble(2));
 				cpt.setDecouvert(res.getDouble(3));
 				listCpt.add(cpt);
-				return listCpt;
+				
 			}
 			// TODO mututaliser les deux erreurs
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			return listCpt;
+			
 		} catch (SQLException e) {
 			try {
 				con.rollback();
@@ -345,7 +345,7 @@ public class DaoImpl implements IDao {
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
-			return listCpt;
+			
 		} finally {
 			DbUtil.seDeconnecter(pstat, res, con);
 		}

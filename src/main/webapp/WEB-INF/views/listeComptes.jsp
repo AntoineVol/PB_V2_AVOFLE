@@ -26,7 +26,7 @@
 	<c:url value="/listeClients" var="listeClientsUrl" />
 	<c:url value="/listeComptes" var="listeComptesUrl" />
 	<c:url value="/virements" var="virementsUrl" />
-
+	<c:url value="/listeComptes?idCompte?solde?decouvert=" var="ajoutCompteUrl" />
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
@@ -55,7 +55,7 @@
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
 		<a href="${listeClientsUrl}" class="col-sm-3">Liste des Clients</a> <a
-			id="ListeCompteColor" href="${listeComptessUrl}" class="col-sm-3">Liste
+			id="ListeCompteColor" href="${listeComptesUrl}" class="col-sm-3">Liste
 			des comptes</a> <a href="${virementsUrl}" class="col-sm-3">Virements
 			compte à compte</a>
 	</nav>
@@ -63,15 +63,9 @@
 	<!-- LISTE DES COMPTES D'UN CLIENTS -->
 	<div class="container-fluid">
 		<h4>
-			<b>Liste des comptes d'un client</b>
+			<b>Liste des comptes du client ${client.id}</b>
 		</h4>
-		<ul>
-			<li>Rentrer l'id d'un client: <input id="creditCE"
-				name="creditCE" type="number"></li>
-			<div>
-				<input type="submit">
-			</div>
-		</ul>
+		
 		<div class="raw">
 			<h2>Comptes Courants</h2>
 			<table class="listeClient">
@@ -90,6 +84,27 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<form class="form-inline" method="post">
+						<fieldset>
+							<!-- Form Name -->
+							<legend align="center">Ajout Compte Courant</legend>
+							<!-- Text input-->
+							<div class="form-group">
+								<div class="input -group">
+									  <label class="col-md-4 control-label" for="solde">Solde</label>  
+									  <div class="col-md-4">
+									  	<input id="solde" name="solde" type="solde" placeholder="solde du nouveau compte courant" class="form-control input-md" type="number" min="0">
+									  </div>
+								      <label class="col-md-4 control-label" for="decouvert">Découvert</label>  
+									  <div class="col-md-4">
+									  	<input id="decouvert" name="decouvert" type="decouvert" placeholder="decouvert du nouveau compte courant" class="form-control input-md" type="number" min="0">
+										<button type="submit" class="btn btn-primary">Ajouter Compte Courant</button>
+									  </div>
+								</div>
+							   </div>
+							</div>
+						</fieldset>
+			</form>
 		</div>
 		<div class="raw">
 		<h2>Comptes Epargnes</h2>

@@ -74,7 +74,7 @@ public class ServiceImpl implements IService {
 	public void createCompteCourant(CompteCourant cpt, Client clt) {
 		// TODO Recupérer un client avec les infos du front
 		// TODO Créer un compte à partir du front
-		dao.createCompteCourant(cpt);
+		dao.createCompteCourant(cpt, clt);
 
 	}
 
