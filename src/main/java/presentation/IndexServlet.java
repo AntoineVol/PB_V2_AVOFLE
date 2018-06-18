@@ -33,9 +33,10 @@ public class IndexServlet extends HttpServlet{
 		String prenom = csl.getPrenom();
 
 		if (service.identifyConseille(login, password)) {
-			resp.sendRedirect(this.getServletContext().getContextPath() + "/listeClients");
 			req.getSession().setAttribute(AuthFilter.SESSION_AUTH, login);
 			req.getSession().setAttribute("login", prenom+" "+nom);
+			req.getSession().setAttribute("idCsl", csl.getId());
+			resp.sendRedirect(this.getServletContext().getContextPath() + "/listeClients?idConseille="+csl.getId());
 
 		} else {resp.sendRedirect(this.getServletContext().getContextPath() + "/AuthFailed");
 				req.getSession().setAttribute(AuthFilter.SESSION_AUTH, null);}

@@ -16,7 +16,7 @@ import domaine.Conseille;
 
 public class DaoImpl implements IDao {
 
-	public void createClient(Client clt) {
+	public void createClient(Client clt, Conseille csl) {
 		PreparedStatement pstat = null;
 		Connection con = null;
 
@@ -28,7 +28,7 @@ public class DaoImpl implements IDao {
 			pstat.setString(2, clt.getNom());
 			pstat.setString(3, clt.getMail());
 			pstat.setString(4, clt.getAdresse());
-			pstat.setInt(5, 1);
+			pstat.setInt(5, csl.getId());
 
 			pstat.executeUpdate();
 			con.commit();
@@ -155,9 +155,9 @@ public class DaoImpl implements IDao {
 
 		try {
 			con = DbUtil.seConnecter();
-			String sql = "SELECT * FROM clients WHERE id_conseille =1";
+			String sql = "SELECT * FROM clients WHERE id_conseille =?";
 			pstat = con.prepareStatement(sql);
-			//pstat.setInt(1, id_csl);
+			pstat.setInt(1, id_csl);
 			res = pstat.executeQuery();
 			con.commit();
 
@@ -578,6 +578,7 @@ public class DaoImpl implements IDao {
 			res = pstat.executeQuery();
 			con.commit();
 			if (res.next()) {
+				csl.setId(id);
 				csl.setPrenom(res.getString(1));
 				csl.setNom(res.getString(2));
 				return csl;

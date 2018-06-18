@@ -33,6 +33,7 @@ public interface IService {
 	
 	public boolean identifyConseille(String login, String password);
 	public Conseille getConseillerByLogin(String login);
+	public Conseille getConseilleByID(int id);
 	
 	
 	

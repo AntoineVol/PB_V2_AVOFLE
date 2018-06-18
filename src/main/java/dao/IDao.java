@@ -11,7 +11,7 @@ public interface IDao {
 
 	
 
-	public void createClient(Client clt);
+	public void createClient(Client clt, Conseille csl);
 	public void upClient(Client c);
 	public void deleteClient(int id);
 	public Client getClientByID(int id);

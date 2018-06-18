@@ -44,6 +44,7 @@
 		<!-- UserName -->
 		<div class="Connexion col-md-2">
 			<h4>
+
 				<font color="green" style="font-variant: small-caps;"><b>${login}</b></font>
 			</h4>
 			<h5>
@@ -92,7 +93,8 @@
 									<h7> <font style="font-variant: small-caps;">Liste
 										des comptes</font></h7>
 								</button></a></td>
-						<td><a href="${deleteUrl}${client.id}&action=suppressionClient"><button>
+						<td><a
+							href="${deleteUrl}${client.id}&action=suppressionClient"><button>
 									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
 								</button></a></td>
 
@@ -100,6 +102,37 @@
 				</c:forEach>
 			</tbody>
 		</table>
+	</div>
+	<div class="container-fluid">
+		<form method="post">
+			<legend>Nouveau client</legend>
+			<div class="form-row">
+				<div class="col">
+					<input type="text" class="form-control" value=${idCsl} name="idCsl" id="idCsl"/>
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" placeholder="Nom"
+						name="nomNouveauClient" id="nomNouveauClient">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" placeholder="Prenom"
+						name="prenomNouveauClient" id="prenomNouveauClient">
+				</div>
+				<div class="col">
+					<input type="email" class="form-control"
+						placeholder="mail@gmail.com" name="mailNouveauClient"
+						id="mailNouveauClient">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" placeholder="adresse"
+						name="adresseNouveauClient" id="adresseNouveauClient">
+				</div>
+				<div class="col">
+					<button type="submit" class="btn btn-primary">Créer</button>
+				</div>
+			</div>
+	</div>
+	</form>
 	</div>
 
 	<!-- BAS DE PAGE -->

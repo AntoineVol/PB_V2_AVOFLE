@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import domaine.Client;
+import domaine.Conseille;
 import service.ServiceImpl;
 
 public class listeClientsServlet extends HttpServlet{
@@ -25,17 +26,18 @@ public class listeClientsServlet extends HttpServlet{
 		ServiceImpl service = new ServiceImpl();
 		List<Client> listClient = new ArrayList<Client>();
 		String action = "Default";
+		String idConseille = request.getParameter("idConseille");
 		if (request.getParameter("action")!=null) {action=request.getParameter("action");}
 		
 		switch(action) {
 		case "suppressionClient" :
 			String idDeleted = request.getParameter("idDeleted");
 			service.deleteClient(Integer.parseInt(idDeleted));
-			listClient.addAll(service.allClient(1));
+			listClient.addAll(service.allClient(Integer.parseInt(idConseille)));
 			break;
 			
 		default:
-			listClient.addAll(service.allClient(1));
+			listClient.addAll(service.allClient(Integer.parseInt(idConseille)));
 			
 		}
 		
@@ -43,5 +45,24 @@ public class listeClientsServlet extends HttpServlet{
 		this.getServletContext()
 		.getRequestDispatcher("/WEB-INF/views/listeClients.jsp")
 		.forward(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ServiceImpl service = new ServiceImpl();
+		Client clt = new Client();
+		clt.setPrenom(req.getParameter("prenomNouveauClient"));
+		clt.setNom(req.getParameter("nomNouveauClient"));
+		clt.setMail(req.getParameter("mailNouveauClient"));
+		clt.setAdresse(req.getParameter("adresseNouveauClient"));
+		
+		Conseille csl ;
+		int idCsl = Integer.parseInt(req.getParameter("idCsl"));
+		csl=service.getConseilleByID(idCsl);
+
+		service.createClient(clt, csl);
+		
+		resp.sendRedirect(this.getServletContext().getContextPath() + "/listeClients?idConseille="+ idCsl);
+
 	}
 }

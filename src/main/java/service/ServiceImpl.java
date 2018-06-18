@@ -41,7 +41,7 @@ public class ServiceImpl implements IService {
 	// FIXME instancier le conseiller au moment du login
 
 	public void createClient(Client c, Conseille csl) {
-		dao.createClient(c);
+		dao.createClient(c,csl);
 
 	}
 
@@ -130,6 +130,10 @@ public class ServiceImpl implements IService {
 	public Conseille getConseillerByLogin(String login) {
 		Conseille csl = dao.getConseilleByLogin(login);
 		return csl;
+	}
+	
+	public Conseille getConseilleByID(int id) {
+		return dao.getConseilleByID(id);
 	}
 
 }
