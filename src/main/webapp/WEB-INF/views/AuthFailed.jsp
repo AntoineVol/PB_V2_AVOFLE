@@ -63,11 +63,12 @@
 							<legend align="center">Connexion</legend>
 							<!-- Text input-->
 							<div class="form-group">
-								<div class="input -group">
+							<div class="input -group">
 								  <div class="col-md-4 alert alert-danger" role="alert">
 									  Erreur de login ou de Password ! 
 								  </div>
-								</div>
+							</div>
+							<div class="form-group">
 								<div class="input -group">
 								  <label class="col-md-4 control-label" for="login">Login</label>  
 								  <div class="col-md-4">
