@@ -26,8 +26,8 @@
 	
 	<!-- Filtre d'URL -->
 	<filter>
-	<filter-name>FiltreAuthentification</filter-name>
-	<filter-class>presentation.AuthFilter</filter-class>
+		<filter-name>FiltreAuthentification</filter-name>
+		<filter-class>presentation.AuthFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>FiltreAuthentification</filter-name>
