@@ -8,9 +8,7 @@ package domaine;
 public class Client extends Personne {
 
 	// Attributs
-	private static int nbClient=0;
 	private int id; 
-	private String typeClient;
 	private Conseille conseille;
 	private CompteCourant compteCourant;
 	private CompteEpargne compteEpargne;
@@ -21,22 +19,11 @@ public class Client extends Personne {
 	public Client() {
 		super();
 	}
-	public Client(String typeClient,String nom, String prenom, String telephone, String adresse, int codePostal, String ville) {
-		super(nom,prenom,telephone, adresse, codePostal, ville);
-		this.id = nbClient;
-		this.typeClient = typeClient;
-		nbClient++;
+	public Client(String nom, String prenom, String mail, String adresse) {
+		super(nom,prenom,mail, adresse);
 	}
 
 	// Getters et setters
-	public String getTypeClient() {
-		return typeClient;
-	}
-
-	public void setTypeClient(String typeClient) {
-		this.typeClient = typeClient;
-	}
-
 	public Conseille getConseille() {
 		return conseille;
 	}
@@ -66,9 +53,5 @@ public class Client extends Personne {
 	
 	public CompteEpargne getCompteEpargne() {
 		return compteEpargne;
-	}
-
-	public String toString() {
-		return "ID = "+this.getId()+" | "+ super.toString()  +" | "+this.typeClient +" | "+ this.getTel() +" | "+ this.getAdresse() +" | "+ this.getCodePostal()+" | "+this.getVille();
 	}
 }

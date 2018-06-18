@@ -12,6 +12,27 @@ import domaine.Conseille;
  * @author Adminl Classe d'implémentation de l'interface IService
  */
 public class ServiceImpl implements IService {	
+	
+	// Début implémentation Design Pattern Singleton -> Classe n'ayant qu'une
+	// seule et unique instance.
+
+	private static ServiceImpl INSTANCE;
+
+	public static ServiceImpl getSingleton() {
+		return ServiceImpl.INSTANCE;
+	}
+
+	public static void prepareSingleton(int idCount)
+			throws UnsupportedOperationException {
+		if (ServiceImpl.INSTANCE == null) {
+			ServiceImpl.INSTANCE = new ServiceImpl();
+		} else {
+			throw new UnsupportedOperationException();
+		}
+	}
+
+	// Fin implémentation Singleton.
+	
 	IDao dao = new DaoImpl();
 
 	// FIXME instancier le conseiller au moment du login
@@ -35,8 +56,8 @@ public class ServiceImpl implements IService {
 		return dao.getClientByID(id);
 	}
 
-	public List<Client> allClient(Conseille csl) {
-		return dao.allClient(csl.getId());
+	public List<Client> allClient(int idConseille) {
+		return dao.allClient(idConseille);
 	}
 
 	public void createCompteCourant(CompteCourant cpt, Client clt) {

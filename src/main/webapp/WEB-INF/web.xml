@@ -5,19 +5,19 @@
 <!-- Description d'une servlet avec association à la classe Java. -->
 	<servlet>
 		<servlet-name>IndexServlet</servlet-name>
-		<servlet-class>web.IndexServlet</servlet-class>
+		<servlet-class>presentation.IndexServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>listeClientsServlet</servlet-name>
-		<servlet-class>web.listeClientsServlet</servlet-class>
+		<servlet-class>presentation.listeClientsServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>listeComptesServlet</servlet-name>
-		<servlet-class>web.listeComptesServlet</servlet-class>
+		<servlet-class>presentation.listeComptesServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>virementsServlet</servlet-name>
-		<servlet-class>web.virementsServlet</servlet-class>
+		<servlet-class>presentation.virementsServlet</servlet-class>
 	</servlet>
 	
 <!--  description du pattern d'url -->

@@ -18,7 +18,7 @@ public interface IService {
 	public void upClient(Client c);
 	public void deleteClient(int id);
 	public Client getClientByID(int id);
-	public List<Client> allClient(Conseille csl);
+	public List<Client> allClient(int idConseille);
 	
 	public void createCompteCourant(CompteCourant cpt, Client clt);
 	public void upCompteCourant(CompteCourant cpt);

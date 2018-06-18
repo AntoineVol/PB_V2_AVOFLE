@@ -53,24 +53,30 @@
 						<th> Id Client </th>
 						<th> Nom </th>
 						<th> Prénom </th>
-						<th> e-mail </th>
+						<th> tel </th>
 						<th> adresse </th>
-						<th>   </th>
+						<th> codePostal  </th>
+						<th> ville  </th>
+						<th> delete  </th>
 						<th>   </th>
 						<th>   </th>
 					</tr>
 				</thead> 	
 				<tbody>
-					<tr>
-						<td>'${client.id}'</td>
-						<td>${client.Nom}</td>
-						<td>${client.Prenom}</td>
-						<td>${client.Mail}</td>
-						<td>${client.Adresse}</td>
-						<td>${client.DeleteById}</td>
-						<td><a href="${listeComptesUrl}"><button><h7><font style="font-variant: small-caps;">Liste des comptes</font></h7></button></a></td>
-						<td><a href="${virementsUrl}"><button><h7><font style="font-variant: small-caps;">Virements</font></h7></button></a></td>
-					</tr>
+					<c:forEach var="client" items="${listClient}">
+						<tr>
+							<td>${client.id}'</td>
+							<td>${client.nom}</td>
+							<td>${client.prenom}</td>
+							<td>${client.tel}</td>
+							<td>${client.adresse}</td>
+							<td>${client.code_postal}</td>
+							<td>${client.ville}</td>
+							<!-- <td>${client.deleteClient}</td> -->
+							<td><a href="${listeComptesUrl}"><button><h7><font style="font-variant: small-caps;">Liste des comptes</font></h7></button></a></td>
+							<td><a href="${virementsUrl}"><button><h7><font style="font-variant: small-caps;">Virements</font></h7></button></a></td>
+						</tr>
+					</c:forEach>
 					<tr>
 						<td>1</td>
 						<td>COC</td>

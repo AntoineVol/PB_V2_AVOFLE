@@ -8,12 +8,12 @@ public class CompteCourant extends Compte {
 	/**
 	 * Le d�couvert autoris� par la banque 
 	 */
-	private double dec;
+	private double decouvert;
 
 	/**
 	 * Le constructeur d'un objet compteCourant d'un client.
 	 * @param solde du compteCourant
-	 * @param dec du compteCourant
+	 * @param decouvert du compteCourant
 	 */
 	public CompteCourant() {
 		super();
@@ -21,31 +21,15 @@ public class CompteCourant extends Compte {
 	
 	public CompteCourant(double solde, double dec) {
 		super(solde);
-		this.dec = dec;
+		this.decouvert = dec;
 	}
 
-	
-
-
-
-	/**
-	 * Retourne le d�couvert autoris� pour le client
-	 * @return le d�couvert
-	 */
 	public double getDec() {
-		return dec;
+		return decouvert;
 	}
-	/**
-	 * Met � jour le d�couvert autoris� par la banque.
-	 * @param dec autoris�
-	 */
+
 	public void setDec(double dec) {
-		this.dec = dec;
+		this.decouvert = dec;
 	}
-	/**
-	 * D�crit l'instanciation d'un compteCourant
-	 */
-	public String toString() {
-		return "Compte Courant : " + this.getId() + " | solde :" + this.getSolde() + " | decouvert authoris�e : "+ this.dec +" | cr�ee le :" +this.getDate(); 
-	}
+
 }

@@ -21,14 +21,13 @@ public class DaoImpl implements IDao {
 
 		try {
 			con = DbUtil.seConnecter();
-			String sql_clt = "INSERT INTO clients (prenom,nom,tel,adresse,code_Postal,ville) VALUES (?,?,?,?,?,?)";
+			String sql_clt = "INSERT INTO clients (prenom,nom,mail,adresse) VALUES (?,?,?,?)";
 			pstat = con.prepareStatement(sql_clt);
 			pstat.setString(1, clt.getPrenom());
 			pstat.setString(2, clt.getNom());
-			pstat.setString(3, clt.getTel());
+			pstat.setString(3, clt.getMail());
 			pstat.setString(4, clt.getAdresse());
-			pstat.setInt(5, clt.getCodePostal());
-			pstat.setString(6, clt.getVille());
+
 			pstat.executeUpdate();
 			con.commit();
 			// TODO mututaliser les deux erreurs
@@ -81,14 +80,12 @@ public class DaoImpl implements IDao {
 
 		try {
 			con = DbUtil.seConnecter();
-			String sql = "UPDATE clients SET prenom=?,nom=?,tel=?,adresse=?,code_Postal=?,ville=? WHERE id=?";
+			String sql = "UPDATE clients SET prenom=?,nom=?,mail=?,adresse=? WHERE id=?";
 			pstat = con.prepareStatement(sql);
 			pstat.setString(1, c.getPrenom());
 			pstat.setString(2, c.getNom());
-			pstat.setString(3, c.getTel());
+			pstat.setString(3, c.getMail());
 			pstat.setString(4, c.getAdresse());
-			pstat.setInt(5, c.getCodePostal());
-			pstat.setString(6, c.getVille());
 			pstat.executeUpdate();
 			con.commit();
 			// TODO mututaliser les deux erreurs
@@ -180,13 +177,10 @@ public class DaoImpl implements IDao {
 			clt = new Client();
 			while (res.next()) {
 				clt.setId(res.getInt(1));
-				clt.setTypeClient(res.getString(2));
-				clt.setPrenom(res.getString(3));
-				clt.setNom(res.getString(4));
-				clt.setTel(res.getString(5));
-				clt.setAdresse(res.getString(6));
-				clt.setCodePostal(res.getInt(7));
-				clt.setVille(res.getString(8));
+				clt.setPrenom(res.getString(2));
+				clt.setNom(res.getString(3));
+				clt.setMail(res.getString(4));
+				clt.setAdresse(res.getString(5));
 			}
 			// TODO mututaliser les deux erreurs
 		} catch (ClassNotFoundException e) {
@@ -222,13 +216,11 @@ public class DaoImpl implements IDao {
 			while (res.next()) {
 				Client clt = new Client();
 				clt.setId(res.getInt(1));
-				clt.setTypeClient(res.getString(2));
-				clt.setPrenom(res.getString(3));
-				clt.setNom(res.getString(4));
-				clt.setTel(res.getString(5));
-				clt.setAdresse(res.getString(6));
-				clt.setCodePostal(res.getInt(7));
-				clt.setVille(res.getString(8));
+				clt.setPrenom(res.getString(2));
+				clt.setNom(res.getString(3));
+				clt.setMail(res.getString(4));
+				clt.setAdresse(res.getString(5));
+
 				listClt.add(clt);
 			}
 			// TODO mututaliser les deux erreurs
