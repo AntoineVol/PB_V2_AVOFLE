@@ -5,7 +5,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">
-	<%-- <%=request.getContextPath()%> --%>
 	<title>ProxiBanque</title>
 	<base href="/">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css"/>
@@ -33,7 +32,7 @@
 				<h1><font color="white">ProxiBanque</font></h1>
 				</div>
 				
-			  <!-- USERNAME A RECUPERER ET AFFICHER ${Conseiller.Nom} -->
+			  <!-- USERNAME A RECUPERER ET AFFICHER  -->
 				<div class="Connexion col-md-2">
 				  <a href="${listeClientsUrl}"><button class="btn"><h5><font color="white">Connexion</font></h5></button></a>
 				</div>
