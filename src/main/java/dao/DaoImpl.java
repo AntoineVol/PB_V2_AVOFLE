@@ -573,6 +573,42 @@ public class DaoImpl implements IDao {
 		return csl;
 	}
 	
+	public Conseille getConseilleByLogin(String login) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+		ResultSet res = null;
+		Conseille csl = new Conseille();
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "SELECT id, prenom, nom FROM conseilles WHERE login=?";
+			pstat = con.prepareStatement(sql);
+			pstat.setString(1, login);
+			res = pstat.executeQuery();
+			con.commit();
+			if (res.next()) {
+				csl.setId(res.getInt(1));
+				csl.setPrenom(res.getString(2));
+				csl.setNom(res.getString(3));
+			}
+			
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DbUtil.seDeconnecter(pstat, res, con);
+		}
+		return csl;
+		
+	}
+	
 
 }
 

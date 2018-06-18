@@ -44,7 +44,7 @@
 		<!-- UserName -->
 		<div class="Connexion col-md-2">
 			<h4>
-				<font color="green" style="font-variant: small-caps;"><b>NomConseiller</b></font>
+				<font color="green" style="font-variant: small-caps;"><b>${login}</b></font>
 			</h4>
 			<h5>
 				<font color="green" style="font-variant: small-caps;"><b>Connected</b></font>

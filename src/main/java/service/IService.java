@@ -32,6 +32,7 @@ public interface IService {
 	public List<CompteEpargne> allCompteEpargneByIdClient(int id);
 	
 	public boolean identifyConseille(String login, String password);
+	public Conseille getConseillerByLogin(String login);
 	
 	
 	

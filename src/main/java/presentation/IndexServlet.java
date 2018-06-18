@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domaine.Conseille;
 import service.ServiceImpl;
 
 public class IndexServlet extends HttpServlet{
@@ -27,11 +28,15 @@ public class IndexServlet extends HttpServlet{
 		// Récupérer les paramètres 'login' et 'password de la page d'authentification.
 		String login = req.getParameter("login");
 		String password = req.getParameter("password");
+		Conseille csl = service.getConseillerByLogin(login);
+		String nom = csl.getNom();
+		String prenom = csl.getPrenom();
 
 		if (service.identifyConseille(login, password)) {
 			resp.sendRedirect(this.getServletContext().getContextPath() + "/listeClients");
 			req.getSession().setAttribute(AuthFilter.SESSION_AUTH, login);
-			
+			req.getSession().setAttribute("login", prenom+" "+nom);
+
 		} else {resp.sendRedirect(this.getServletContext().getContextPath() + "/AuthFailed");
 				req.getSession().setAttribute(AuthFilter.SESSION_AUTH, null);}
 	}

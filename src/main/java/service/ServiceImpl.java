@@ -118,5 +118,11 @@ public class ServiceImpl implements IService {
 		return listCompte;
 	}
 
+	@Override
+	public Conseille getConseillerByLogin(String login) {
+		Conseille csl = dao.getConseilleByLogin(login);
+		return csl;
+	}
+
 }
 

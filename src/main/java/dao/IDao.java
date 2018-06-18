@@ -32,6 +32,7 @@ public interface IDao {
 	
 	public boolean checkConseilleId(String login, String password);
 	public Conseille getConseilleByID(int id);
+	public Conseille getConseilleByLogin(String login);
 
 	
 	
