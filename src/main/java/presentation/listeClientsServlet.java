@@ -24,13 +24,22 @@ public class listeClientsServlet extends HttpServlet{
 		
 		ServiceImpl service = new ServiceImpl();
 		List<Client> listClient = new ArrayList<Client>(service.allClient(1));
+		String action = "Default";
+		if (request.getParameter("action")!=null) {action=request.getParameter("action");}
+		
+		switch(action) {
+		case "suppressionClient" :
+			String idDeleted = request.getParameter("idDeleted");
+			service.deleteClient(Integer.parseInt(idDeleted));
+			break;
+			
+		default:
 
 		maSession.setAttribute("listClient", listClient);
-
+		
+		}
 		
 
-
-		
 		this.getServletContext()
 		.getRequestDispatcher("/WEB-INF/views/listeClients.jsp")
 		.forward(request, response);
