@@ -78,6 +78,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:url value="/delete?id=" var="deleteUrl" />
 				<c:forEach var="client" items="${listClient}">
 					<tr>
 						<td>${client.id}</td>
