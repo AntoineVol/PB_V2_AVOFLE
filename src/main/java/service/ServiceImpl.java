@@ -6,7 +6,6 @@ import java.util.List;
 import dao.DaoImpl;
 import dao.IDao;
 import domaine.Client;
-import domaine.Compte;
 import domaine.CompteCourant;
 import domaine.CompteEpargne;
 import domaine.Conseille;
@@ -42,10 +41,6 @@ public class ServiceImpl implements IService {
 
 	public void createClient(Client c, Conseille csl) {
 		dao.createClient(c,csl);
-	}
-
-	public void upClient(Client c) {
-		dao.upClient(c);
 	}
 
 	public void deleteClient(int id) {
@@ -137,6 +132,11 @@ public class ServiceImpl implements IService {
 	@Override
 	public void createCompteEpargne(CompteEpargne cep, Client clt) {
 		dao.createCompteEpargne(cep, clt);		
+	}
+
+	@Override
+	public void upClient(Client clt) {
+		dao.upClient(clt);
 	}
 
 }

@@ -25,7 +25,12 @@
 	<!-- LISTE DES URLs -->
 	<c:url value="/listeClients" var="listeClientsUrl" />
 	<c:url value="/listeComptes?idClient=" var="listeComptesUrl" />
+	<<<<<<< HEAD
 	<c:url value="/virements?idClient=" var="virementsUrl" />
+	=======
+	<c:url value="/virements" var="virementsUrl" />
+	<c:url value="/clientEdition?idClient=" var="clientEditionUrl" />
+	>>>>>>> 01e22064a0e2de09e4cead4e4fe32289e4fba365
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
@@ -86,15 +91,14 @@
 						<td>${client.prenom}</td>
 						<td>${client.mail}</td>
 						<td>${client.adresse}</td>
-						<td><a data-target="#Editer"><button>
+						<td><a href="${clientEditionUrl}${client.id}&idCsl=${idCsl}"><button>
 									<h7> <font style="font-variant: small-caps;">Edition</font></h7>
 								</button></a></td>
 						<td><a href="${listeComptesUrl}${client.id}&idCsl=${idCsl}"><button>
 									<h7> <font style="font-variant: small-caps;">Liste
 										des comptes</font></h7>
 								</button></a></td>
-						<td><a
-							href="${virementsUrl}${client.id}"><button>
+						<td><a href="${virementsUrl}${client.id}"><button>
 									<h7> <font style="font-variant: small-caps;">Virements</font></h7>
 								</button></a></td>
 						<td><a
@@ -113,7 +117,8 @@
 			<div class="form-row">
 				<div class="col">
 					<input type="hidden" class="form-control" value=${idCsl
-						} name="idCsl" id="idCsl" />
+						}
+						name="idCsl" id="idCsl" />
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" placeholder="Nom"
@@ -136,8 +141,7 @@
 					<button type="submit" class="btn btn-primary">Créer</button>
 				</div>
 			</div>
-	</div>
-	</form>
+		</form>
 	</div>
 
 	<!-- BAS DE PAGE -->
