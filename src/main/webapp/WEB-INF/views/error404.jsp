@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false" session="true"%>
+    pageEncoding="UTF-8" isErrorPage="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,13 +21,14 @@
 <body>
 	<!-- LISTE DES URLs -->
 	<c:url value="/listeClients" var="listeClientsUrl" />
+	<c:url value="/logout" var="logoutUrl" />
 
 
 	<!-- Entête avec Logo -->
 	<header class="container-fluid">
 		<nav class="navbar fixed-top navbar-dark bg-dark">
 			<div class="col-md-2">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/">
+				<a class="navbar-brand">
 					<img name="logo"
 					src="${pageContext.request.contextPath}/images/logo-banque.jpg"
 					alt="LOGO">
@@ -40,11 +42,6 @@
 
 			<!-- USERNAME A RECUPERER ET AFFICHER ${Conseiller.Nom} -->
 			<div class="Connexion col-md-2">
-				<a href="${listeClientsUrl}"><button class="btn">
-						<h5>
-							<font color="white">Connexion</font>
-						</h5>
-					</button></a>
 			</div>
 		</nav>
 	</header>
@@ -59,8 +56,8 @@
 
 		<!-- Table pour naviguer -->
 		<div name="tabCentrale" class="container">
-			<h2>Cher Conseiller de clientèle</h2>
-			<h4>La page demandée est innexistante</h4>
+			<h2>La page demandée est inexistante</h2>
+			<h5>Pour retourner à la page d'accueil cliquez <a href="${pageContext.request.contextPath}/">ici</a></h5>
 		</div>
 	</section>
 
