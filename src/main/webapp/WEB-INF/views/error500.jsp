@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
 <%-- <%=request.getContextPath()%> --%>
-<title>Error404</title>
+<title>Error500</title>
 <base href="/">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css" />
 
