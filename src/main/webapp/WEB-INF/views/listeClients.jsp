@@ -30,11 +30,11 @@
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
 		<div class="col-md-2">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/">
+			<div class="navbar-brand">
 				<img name="logo"
 				src="${pageContext.request.contextPath}/images/logo-banque.jpg"
 				alt="LOGO">
-			</a>
+			</div>
 		</div>
 		<div class="col-md-8 d-flex justify-content-center align-items-center">
 			<h1>
@@ -89,7 +89,7 @@
 						<td><a data-target="#Editer"><button>
 									<h7> <font style="font-variant: small-caps;">Edition</font></h7>
 								</button></a></td>
-						<td><a href="${listeComptesUrl}${client.id}"><button>
+						<td><a href="${listeComptesUrl}${client.id}&idCsl=${idCsl}"><button>
 									<h7> <font style="font-variant: small-caps;">Liste
 										des comptes</font></h7>
 								</button></a></td>
@@ -108,7 +108,7 @@
 			<legend>Nouveau client</legend>
 			<div class="form-row">
 				<div class="col">
-					<input type="text" class="form-control" value=${idCsl} name="idCsl" id="idCsl"/>
+					<input type="hidden" class="form-control" value=${idCsl} name="idCsl" id="idCsl"/>
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" placeholder="Nom"

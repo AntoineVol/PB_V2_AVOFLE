@@ -23,7 +23,7 @@
 </head>
 <body>
 	<!-- LISTE DES URLs -->
-	<c:url value="/listeClients" var="listeClientsUrl" />
+	<c:url value="/listeClients?idConseille=" var="listeClientsUrl" />
 	<c:url value="/listeComptes" var="listeComptesUrl" />
 	<c:url value="/virements" var="virementsUrl" />
 	<c:url value="/listeComptes?idCompte?solde?decouvert=" var="ajoutCompteUrl" />
@@ -31,7 +31,7 @@
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
 		<div class="col-md-2">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/">
+			<a class="navbar-brand" href="${listeClientsUrl}${idCsl}">
 				<img name="logo"
 				src="${pageContext.request.contextPath}/images/logo-banque.jpg"
 				alt="LOGO">
@@ -54,7 +54,7 @@
 	</nav>
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
-		<a href="${listeClientsUrl}" class="col-sm-3">Liste des Clients</a> <a
+		<a href="${listeClientsUrl}${idCsl}" class="col-sm-3">Liste des Clients</a> <a
 			id="ListeCompteColor" href="${listeComptesUrl}" class="col-sm-3">Liste
 			des comptes</a> <a href="${virementsUrl}" class="col-sm-3">Virements
 			compte à compte</a>

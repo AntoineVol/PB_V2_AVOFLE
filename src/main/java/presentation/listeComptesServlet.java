@@ -24,12 +24,14 @@ public class listeComptesServlet extends HttpServlet {
 		HttpSession maSession = request.getSession(true);
 		ServiceImpl service = new ServiceImpl();
 		String idClient = request.getParameter("idClient");
+		String idCsl = request.getParameter("idCsl");
 
 		List<CompteCourant> listCompteCourant = new ArrayList<CompteCourant>(service.allCompteCourantByIdClient(Integer.parseInt(idClient)));
 		List<CompteEpargne> listCompteEpargne = new ArrayList<CompteEpargne>(service.allCompteEpargneByIdClient(Integer.parseInt(idClient)));
 		
 		maSession.setAttribute("listCompteCourant", listCompteCourant);
 		maSession.setAttribute("listCompteEpargne", listCompteEpargne);
+		maSession.setAttribute("idCsl", idCsl);
 		
 		this.getServletContext()
 		.getRequestDispatcher("/WEB-INF/views/listeComptes.jsp")

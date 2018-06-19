@@ -40,7 +40,7 @@ public class listeClientsServlet extends HttpServlet{
 			listClient.addAll(service.allClient(Integer.parseInt(idConseille)));
 			
 		}
-		
+		maSession.setAttribute("idCsl", idConseille);
 		maSession.setAttribute("listClient", listClient);
 		this.getServletContext()
 		.getRequestDispatcher("/WEB-INF/views/listeClients.jsp")
