@@ -39,11 +39,6 @@
 			</div>
 
 			<div class="Connexion col-md-2">
-				<a href="${listeClientsUrl}"><button class="btn">
-						<h5>
-							<font color="white">Connexion</font>
-						</h5>
-					</button></a>
 			</div>
 		</nav>
 	</header>
