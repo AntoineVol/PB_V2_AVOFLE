@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import domaine.Client;
 import domaine.CompteCourant;
 import domaine.CompteEpargne;
+import domaine.Conseille;
 import service.ServiceImpl;
 
 public class listeComptesServlet extends HttpServlet {
@@ -56,6 +57,10 @@ public class listeComptesServlet extends HttpServlet {
 		
 		service.createCompteCourant(cpt, clt);
 		
-		resp.sendRedirect(this.getServletContext().getContextPath() + "/listeComptes?idClient="+2);
+		Conseille csl ;
+		String idCsl = req.getParameter("idCsl");
+		
+		
+		resp.sendRedirect(this.getServletContext().getContextPath() + "/listeClients?idConseille="+ idCsl);
 	}
 }

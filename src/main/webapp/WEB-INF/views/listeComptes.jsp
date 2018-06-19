@@ -84,27 +84,28 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<form class="form-inline" method="post">
-						<fieldset>
-							<!-- Form Name -->
-							<legend align="center">Ajout Compte Courant</legend>
-							<!-- Text input-->
-							<div class="form-group">
-								<div class="input -group">
-									  <label class="col-md-4 control-label" for="solde">Solde</label>  
-									  <div class="col-md-4">
-									  	<input id="solde" name="solde" type="solde" placeholder="solde du nouveau compte courant" class="form-control input-md" type="number" min="0">
-									  </div>
-								      <label class="col-md-4 control-label" for="decouvert">Découvert</label>  
-									  <div class="col-md-4">
-									  	<input id="decouvert" name="decouvert" type="decouvert" placeholder="decouvert du nouveau compte courant" class="form-control input-md" type="number" min="0">
-										<button type="submit" class="btn btn-primary">Ajouter Compte Courant</button>
-									  </div>
-								</div>
-							   </div>
-							</div>
-						</fieldset>
-			</form>
+			<%-- Form Création nouveau compte Courant --%>
+			<div class="container-fluid">
+				<form method="post">
+					<legend>Nouveau Compte Courant</legend>
+					<div class="form-row">
+						<div class="col">
+							<input type="hidden" class="form-control" value=${idCsl} name="idCsl" id="idCsl "/>
+						</div>
+						<div class="col">
+							<input type="number" class="form-control" placeholder="Solde"
+								name="solde" id="solde" min="0">
+						</div>
+						<div class="col">
+							<input type="number" class="form-control" placeholder="Découvert"
+								name="decouvert" id="decouvert">
+						</div>
+						<div class="col">
+							<button type="submit" class="btn btn-primary">Créer</button>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 		<div class="raw">
 		<h2>Comptes Epargnes</h2>
