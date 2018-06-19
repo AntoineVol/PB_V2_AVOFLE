@@ -21,7 +21,7 @@ public class listeClientsServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession maSession = request.getSession(true);
+		HttpSession maSession = request.getSession();
 		
 		ServiceImpl service = new ServiceImpl();
 		List<Client> listClient = new ArrayList<Client>();

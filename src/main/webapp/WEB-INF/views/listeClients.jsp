@@ -25,15 +25,15 @@
 	<!-- LISTE DES URLs -->
 	<c:url value="/listeClients" var="listeClientsUrl" />
 	<c:url value="/listeComptes?idClient=" var="listeComptesUrl" />
-	<c:url value="/virements" var="virementsUrl" />
+	<c:url value="/virements?idClient=" var="virementsUrl" />
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
 		<div class="col-md-2">
 			<div class="navbar-brand">
 				<img name="logo"
-				src="${pageContext.request.contextPath}/images/logo-banque.jpg"
-				alt="LOGO">
+					src="${pageContext.request.contextPath}/images/logo-banque.jpg"
+					alt="LOGO">
 			</div>
 		</div>
 		<div class="col-md-8 d-flex justify-content-center align-items-center">
@@ -55,8 +55,7 @@
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
 		<a id="ListeClientColor" href="${listeClientsUrl}" class="col-sm-3">Liste
-			des Clients</a><a href="${virementsUrl}" class="col-sm-3">Virements
-			compte à compte</a>
+			des Clients</a>
 	</nav>
 
 	<!-- LISTING DES CLIENTS -->
@@ -74,6 +73,7 @@
 					<th>adresse</th>
 					<th>Edition</th>
 					<th>Details</th>
+					<th>Virements</th>
 					<th>Suppression</th>
 				</tr>
 			</thead>
@@ -94,6 +94,10 @@
 										des comptes</font></h7>
 								</button></a></td>
 						<td><a
+							href="${virementsUrl}${client.id}"><button>
+									<h7> <font style="font-variant: small-caps;">Virements</font></h7>
+								</button></a></td>
+						<td><a
 							href="${deleteUrl}${client.id}&action=suppressionClient"><button>
 									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
 								</button></a></td>
@@ -108,7 +112,8 @@
 			<legend>Nouveau client</legend>
 			<div class="form-row">
 				<div class="col">
-					<input type="hidden" class="form-control" value=${idCsl} name="idCsl" id="idCsl"/>
+					<input type="hidden" class="form-control" value=${idCsl
+						} name="idCsl" id="idCsl" />
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" placeholder="Nom"

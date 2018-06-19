@@ -42,11 +42,12 @@ public class listeComptesServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServiceImpl service = new ServiceImpl();
-		HttpSession maSession = req.getSession(true);
+
+		HttpSession maSession = req.getSession();
 		
-		// Récupérer les paramètres solde, découvert et idClient pour créer
-		// CompteCourant depuis la page ListeCompte.
+
 		String decouvert = null;
+
 		String solde = req.getParameter("solde");
 		decouvert = req.getParameter("decouvert");
 		String idClient = req.getParameter("idClient");
