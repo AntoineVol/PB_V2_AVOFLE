@@ -461,78 +461,7 @@ public class DaoImpl implements IDao {
 
 	}
 	
-	public boolean moneyTransfer(int idComptePreleve, int idCompteCredite, double montant) {
-		if(moneyPay(idComptePreleve, montant) && moneyWithdraw(idCompteCredite, montant)) {
-			return true;
-		}else {
-			return false;
-		}		
-	}
-	public boolean moneyWithdraw(int idCompte, double montant) {
-		PreparedStatement pstat = null;
-		Connection con = null;
-		Compte cpt;
-		cpt = getCompteCourantByID(idCompte);
-
-		try {
-			con = DbUtil.seConnecter();
-			String sql = "UPDATE comptescourants SET solde=? WHERE id=?";
-			pstat = con.prepareStatement(sql);
-			pstat.setDouble(1, cpt.getSolde());
-			pstat.setDouble(2, cpt.getSolde()+montant);
-			pstat.executeUpdate();
-			con.commit();
-			return true;
-			// TODO mututaliser les deux erreurs
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return false;
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-				return false;
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-			return false;
-		} finally {
-			DbUtil.seDeconnecter(pstat, null, con);
-		}
-	}
 	
-	public boolean moneyPay(int idCompte, double montant) {
-		PreparedStatement pstat = null;
-		Connection con = null;
-		Compte cpt;
-		cpt = getCompteCourantByID(idCompte);
-
-		try {
-			con = DbUtil.seConnecter();
-			String sql = "UPDATE comptescourants SET solde=? WHERE id=?";
-			pstat = con.prepareStatement(sql);
-			pstat.setDouble(1, cpt.getSolde());
-			pstat.setDouble(2, cpt.getSolde()-montant);
-			pstat.executeUpdate();
-			con.commit();
-			return true;
-			// TODO mututaliser les deux erreurs
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return false;
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-				return false;
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-			return false;
-		} finally {
-			DbUtil.seDeconnecter(pstat, null, con);
-		}
-	}
 	public boolean checkConseilleId(String login, String password) {
 		PreparedStatement pstat = null;
 		Connection con = null;
@@ -669,7 +598,6 @@ public class DaoImpl implements IDao {
 		
 	}
 
-<<<<<<< Updated upstream
 	@Override
 	public void upClient(Client clt) {
 		PreparedStatement pstat = null;
@@ -684,8 +612,22 @@ public class DaoImpl implements IDao {
 			pstat.setString(3, clt.getMail());
 			pstat.setString(4, clt.getAdresse());
 			pstat.setInt(5, clt.getId());
-
-=======
+			pstat.executeUpdate();
+			con.commit();
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DbUtil.seDeconnecter(pstat, null, con);
+		}
+}
 
 
 	@Override
@@ -800,7 +742,6 @@ public class DaoImpl implements IDao {
 			pstat = con.prepareStatement(sql);
 			pstat.setDouble(1, cpt.getSolde()-montant);
 			pstat.setDouble(2, idCompte);
->>>>>>> Stashed changes
 			pstat.executeUpdate();
 			con.commit();
 			// TODO mututaliser les deux erreurs

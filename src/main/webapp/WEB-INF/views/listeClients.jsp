@@ -25,12 +25,9 @@
 	<!-- LISTE DES URLs -->
 	<c:url value="/listeClients" var="listeClientsUrl" />
 	<c:url value="/listeComptes?idClient=" var="listeComptesUrl" />
-	<<<<<<< HEAD
 	<c:url value="/virements?idClient=" var="virementsUrl" />
-	=======
-	<c:url value="/virements" var="virementsUrl" />
 	<c:url value="/clientEdition?idClient=" var="clientEditionUrl" />
-	>>>>>>> 01e22064a0e2de09e4cead4e4fe32289e4fba365
+
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
@@ -100,14 +97,14 @@
 								</button></a></td>
 
 						<td><a href="${virementsUrl}${client.id}&idCsl=${idCsl}"><button>
-
 									<h7> <font style="font-variant: small-caps;">Virements</font></h7>
 								</button></a></td>
 						<td><a
 							href="${deleteUrl}${client.id}&action=suppressionClient">
-							<button>
+								<button>
 									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
-								</button></a></td>
+								</button>
+						</a></td>
 
 					</tr>
 				</c:forEach>
