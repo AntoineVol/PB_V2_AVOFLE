@@ -57,22 +57,87 @@ public interface IService {
 	 */
 	public void createCompteEpargne(CompteEpargne cep, Client clt);
 
+	/**
+	 * Methode permettant de supprimer en base de donnée un compte courant à partir de son id
+	 * @param id id du compte à supprimer
+	 */
 	public void deleteCompteCourant(int id);
+	/**
+	 *  Methode permettant de supprimer en base de donnée un compte epargne à partir de son id
+	 * @param id id du compte à supprimer
+	 */
 	public void deleteCompteEpargne(int id);
+	/**
+	 *  Methode permettant de recupérer un compte courant à partir de son id
+	 * @param id id du compte à récuperer
+	 * @return Compte courant à récuperer
+	 */
 	public CompteCourant getCompteCourantByID(int id);
-	public List<CompteCourant> allCompteCourant();
+	
+	/**
+	 *  Methode permettant de recupérer un compte epargne à partir de son id
+	 * @param id id du compte à récuperer
+	 * @return Compte epargne à récuperer
+	 */
+	public CompteEpargne getCompteEpargneByID(int id);
 
 	
+	/**
+	 * Methode permettant de recupérer tous les comptes courant d'un client à partir de son id
+	 * @param id id du client dont les comptes courants sont récupérés
+	 * @return Une liste des comptes courant du client
+	 */
 	public List<CompteCourant> allCompteCourantByIdClient(int id);
+	/**
+	 * Methode permettant de recupérer tous les comptes epargnes d'un client à partir de son id
+	 * @param id id du client dont les comptes epargnes sont récupérés
+	 * @return Une liste des comptes epargnes du client
+	 */
 	public List<CompteEpargne> allCompteEpargneByIdClient(int id);
 	
+	/**
+	 * Methode retournant true si le couple login password est dans la base de donnée des conseillés
+	 * @param login Login du conseillé
+	 * @param password Mot de passe du conseillé
+	 * @return true si le login est valide ou false si le login est invalide
+	 */
 	public boolean identifyConseille(String login, String password);
+	/**
+	 * Methode retournant un conseillé identifié à partir de son login
+	 * @param login Login du conseillé
+	 * @return Conseille identifié par ce login
+	 */
 	public Conseille getConseillerByLogin(String login);
+	/**
+	 * Methode retournant un conseillé identifié à partir de son id
+	 * @param id id du conseillé
+	 * @return Conseillé identifié par l'id
+	 */
 	public Conseille getConseilleByID(int id);
 	
+	/**
+	 * Methode permettant le versement d'argent un compte courant identifié par son id
+	 * @param idCompte id identifiant le compte
+	 * @param montant Montant à verser sur le compte
+	 */
 	public void moneyWithdrawCompteCourant(int idCompte, double montant);
+	/**
+	 * Methode permettant le versement d'argent un compte epargne identifié par son id
+	 * @param idCompte id identifiant le compte
+	 * @param montant Montant à verser sur le compte
+	 */
 	public void moneyWithdrawCompteEpargne(int idCompte, double montant);
+	/**
+	 * Methode permettant le retrait d'argent un compte courant identifié par son id
+	 * @param idCompte id identifiant le compte
+	 * @param montant Montant à verser sur le compte
+	 */
 	public void moneyPayCompteCourant(int idCompte, double montant);
+	/**
+	 * Methode permettant le retrait d'argent un compte epargne identifié par son id
+	 * @param idCompte id identifiant le compte
+	 * @param montant Montant à verser sur le compte
+	 */
 	public void moneyPayCompteEpargne(int idCompte, double montant);
 	
 	

@@ -90,10 +90,10 @@ public class ServiceImpl implements IService {
 	public CompteCourant getCompteCourantByID(int id) {
 		return dao.getCompteCourantByID(id);
 	}
-
-	public List<CompteCourant> allCompteCourant() {
-		return dao.allCompteCourant();
+	public CompteEpargne getCompteEpargneByID(int id) {
+		return dao.getCompteEpargneByID(id);
 	}
+
 
 	public boolean identifyConseille(String login, String password) {
 		boolean idConseille;
