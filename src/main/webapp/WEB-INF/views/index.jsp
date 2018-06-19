@@ -31,6 +31,9 @@
 				<div class="col-md-3">
 				<h1><font color="white">ProxiBanqueSI</font></h1>
 				</div>
+				<div class="col-md-2">
+				 
+				</div>
 
 		</nav>
 	</header>
@@ -74,6 +77,13 @@
 								<input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" pattern=".{4,}">
 								<small id="passwordHelp" class="form-text text-muted">Votre Password doit contenir au moins 4 caractères </small>
 							  </div>
+							</div>
+							<!-- Button -->
+							<div class="form-group" align="center">
+								<label class="col-md-4 control-label" for="connexion"> </label>
+								<div class="col-md-4 " align="center">
+									<button id="singlebutton" name="singlebutton" class="btn btn-primary">Se Connecter</button>
+								</div>
 							</div>
 						</fieldset>
 						</form>
