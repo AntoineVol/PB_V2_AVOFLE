@@ -23,7 +23,7 @@
 </head>
 <body>
 	<!-- LISTE DES URLs -->
-	<c:url value="/listeClients" var="listeClientsUrl" />
+	<c:url value="/listeClients?idConseille=" var="listeClientsUrl" />
 	<c:url value="/listeComptes" var="listeComptesUrl" />
 	<c:url value="/virements" var="virementsUrl" />
 
@@ -31,8 +31,8 @@
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
 		<div class="col-md-2">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/">
-				<img name="logo"
+			<a class="navbar-brand" href="${listeClientsUrl}${idCsl}"> <img
+				name="logo"
 				src="${pageContext.request.contextPath}/images/logo-banque.jpg"
 				alt="LOGO">
 			</a>
@@ -54,62 +54,110 @@
 	</nav>
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
-		<a href="${listeClientsUrl}" class="col-sm-3">Liste des Clients</a>
+		<a href="${listeClientsUrl}${idCsl}" class="col-sm-3">Liste des
+			Clients</a>
 	</nav>
 
-	<!-- VIREMENTS -->
+	<%-- LISTE DES COMPTES D'UN CLIENTS --%>
 	<div class="container-fluid">
-		<form method="post">
-			<legend>Effectuer un nouveau virement</legend>
-			<div class="form-raw">
-				<div class="col">
-					<label for="Debiter">Compte à debiter</label> <select
-						name="Debiter" id="Debiter">
-						<c:forEach var="compte" items="${listCompte}">
-							<option>${compte}</option>
-						</c:forEach>
-					</select>
-				</div>
-				<div class="col">
-					<label for="crediter">Compte à crediter</label> <select class="col"
-						name="crediter" id="crediter">
-						<c:forEach var="compte" items="${listCompte}">
-							<option>${compte.id}-${compte.solde}</option>
-						</c:forEach>
-					</select>
-				</div>
-				<div class="col">
-					<label class="col" for="montant">Montant</label>
-					<div class="input-group">
-						<input type="text" class="form-control" id="montant"
-							name="montant">
-						<div class="input-group-prepend">
-							<div class="input-group-text">€</div>
+		<h4>
+			<b>Liste des comptes du client ${client.id}</b>
+		</h4>
+
+		<div class="raw">
+			<h2>Comptes Courants</h2>
+			<table class="listeClient">
+				<thead style="font-variant: small-caps;">
+					<th>Id Compte</th>
+					<th>Solde</th>
+					<th>Decouvert</th>
+				</thead>
+				<tbody>
+					<c:forEach var="CompteCourant" items="${listCompteCourant}">
+						<tr>
+							<td>${CompteCourant.id}</td>
+							<td>${CompteCourant.solde}</td>
+							<td>${CompteCourant.decouvert}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<div class="raw">
+			<h2>Comptes Epargnes</h2>
+			<table class="listeClient">
+				<thead style="font-variant: small-caps;">
+					<th>Id Compte</th>
+					<th>Solde</th>
+					<th>Taux</th>
+				</thead>
+				<tbody>
+					<c:forEach var="CompteEpargne" items="${listCompteEpargne}">
+						<tr>
+							<td>${CompteEpargne.id}</td>
+							<td>${CompteEpargne.solde}</td>
+							<td>${CompteEpargne.taux}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
+			<!-- VIREMENTS -->
+			<div class="container-fluid">
+				<form method="post">
+					<legend>Effectuer un nouveau virement</legend>
+					<div class="form-row align-items-center">
+
+						<div class="form-group">
+							<label for="debiter">Compte à debiter</label> <select
+								class="form-control" name="debiter" id="Debiter">
+								<c:forEach var="compte" items="${listCompte}">
+									<option value="${compte.id}##${compte.typeCompteCourant}">Id
+										: ${compte.id} - Solde : ${compte.solde}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group col">
+							<label for="crediter">Compte à debiter</label> <select
+								class="form-control" name="crediter" id="crediter">
+								<c:forEach var="compte" items="${listCompte}">
+									<option value="${compte.id}##${compte.typeCompteCourant}">Id
+										: ${compte.id} - Solde : ${compte.solde}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group col">
+							<label for="montant">Montant</label> <input type="number"
+								class="form-control" placeholder="montant" name="montant"
+								id="montant" min="0">
+						</div>
+						<div class="form-group col">
+							<button type="submit" class="btn btn-primary">Effectuer
+								le virement</button>
+						</div>
+						<div class="form-group col">
+							<input type="hidden" class="form-control"
+								value=${idClient
+						} name="idClient" id="idClient" />
+						</div>
+						<div class="form-group col">
+							<input type="hidden" class="form-control"
+								value=${idCsl
+						} name="idCsl" id="idCsl" />
 						</div>
 					</div>
-				</div>
-
-				<div class="col">
-					<button type="submit" class="btn btn-primary">Effectuer le
-						virement</button>
-				</div>
+				</form>
 			</div>
-		</form>
-	</div>
 
-
-	<!-- BAS DE PAGE -->
-	<br>
-	<br>
-	<br>
-	<br>
-	<nav class="navbar fixed-bottom navbar-dark bg-dark">
-		<footer class="container">
-			<p>
-				<font color="white"> 2018 © ProxiBanque. Tous droits
-					réservés. </font>
-			</p>
-		</footer>
-	</nav>
+			<!-- BAS DE PAGE -->
+			<br> <br> <br> <br>
+			<nav class="navbar fixed-bottom navbar-dark bg-dark">
+				<footer class="container">
+					<p>
+						<font color="white"> 2018 © ProxiBanque. Tous droits
+							réservés. </font>
+					</p>
+				</footer>
+			</nav>
 </body>
 </html>

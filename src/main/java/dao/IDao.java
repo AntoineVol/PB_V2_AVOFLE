@@ -25,12 +25,15 @@ public interface IDao {
 	public List<CompteCourant> allCompteCourant();
 	public List<CompteCourant> allCompteCourantByClientId(int id);
 	
+	
 	public void deleteCompteEpargne(int id);
+	public CompteEpargne getCompteEpargneByID(int idCompte);
 	public List<CompteEpargne> allCompteEpargneByClientId(int id);
 	
-	public boolean moneyTransfer(int idComptePreleve, int idCompteCredite, double montant);
-	public boolean moneyWithdraw(int idCompte, double montant);
-	public boolean moneyPay(int idCompte, double montant); 
+	public void moneyWithdrawCompteCourant(int idCompte, double montant);
+	public void moneyWithdrawCompteEpargne(int idCompte, double montant);
+	public void moneyPayCompteCourant(int idCompte, double montant);
+	public void moneyPayCompteEpargne(int idCompte, double montant);
 	
 	public boolean checkConseilleId(String login, String password);
 	public Conseille getConseilleByID(int id);

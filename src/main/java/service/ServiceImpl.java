@@ -99,15 +99,6 @@ public class ServiceImpl implements IService {
 			return false;
 		}
 	}
-
-	public boolean transfer(int idComptePreleve, int idCompteCredite, double montant) {
-		if (dao.getCompteCourantByID(idComptePreleve).getSolde() >= montant) {
-			dao.moneyTransfer(idComptePreleve, idCompteCredite, montant);
-			return true;
-		}else {
-			return false;
-		}
-	}
 	
 	public List<CompteCourant> allCompteCourantByIdClient(int id){
 		List<CompteCourant> listCompte = new ArrayList<CompteCourant>(dao.allCompteCourantByClientId(id));
@@ -133,6 +124,20 @@ public class ServiceImpl implements IService {
 	public void createCompteEpargne(CompteEpargne cep, Client clt) {
 		dao.createCompteEpargne(cep, clt);		
 	}
+	
+	public void moneyWithdrawCompteCourant(int idCompte, double montant) {
+		dao.moneyWithdrawCompteCourant(idCompte, montant);
+	}
+	public void moneyWithdrawCompteEpargne(int idCompte, double montant) {
+		dao.moneyWithdrawCompteEpargne(idCompte, montant);
+	}
+	public void moneyPayCompteCourant(int idCompte, double montant) {
+		dao.moneyPayCompteCourant(idCompte, montant);
+	}
+	public void moneyPayCompteEpargne(int idCompte, double montant) {
+		dao.moneyPayCompteEpargne(idCompte, montant);
+	}
+
 
 	@Override
 	public void upClient(Client clt) {

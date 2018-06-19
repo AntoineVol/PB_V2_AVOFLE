@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import domaine.Client;
+import domaine.Compte;
 import domaine.CompteCourant;
 import domaine.CompteEpargne;
 import domaine.Conseille;
@@ -27,7 +28,7 @@ public interface IService {
 	public void deleteCompteCourant(int id);
 	public CompteCourant getCompteCourantByID(int id);
 	public List<CompteCourant> allCompteCourant();
-	public boolean transfer (int idComptePreleve, int idCompteCredite, double montant);
+
 	
 	public List<CompteCourant> allCompteCourantByIdClient(int id);
 	public List<CompteEpargne> allCompteEpargneByIdClient(int id);
@@ -36,7 +37,10 @@ public interface IService {
 	public Conseille getConseillerByLogin(String login);
 	public Conseille getConseilleByID(int id);
 	
-	
+	public void moneyWithdrawCompteCourant(int idCompte, double montant);
+	public void moneyWithdrawCompteEpargne(int idCompte, double montant);
+	public void moneyPayCompteCourant(int idCompte, double montant);
+	public void moneyPayCompteEpargne(int idCompte, double montant);
 	
 	
 	

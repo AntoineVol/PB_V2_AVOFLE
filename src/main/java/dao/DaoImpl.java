@@ -262,6 +262,7 @@ public class DaoImpl implements IDao {
 				cpt.setSolde(res.getDouble(2));
 				cpt.setDate(res.getString(3));
 				cpt.setDecouvert(res.getDouble(4));
+				cpt.setTypeCompteCourant(true);
 			}
 			// TODO mututaliser les deux erreurs
 		} catch (ClassNotFoundException e) {
@@ -299,6 +300,7 @@ public class DaoImpl implements IDao {
 				cpt.setId(res.getInt(1));
 				cpt.setSolde(res.getDouble(2));
 				cpt.setDecouvert(res.getDouble(3));
+				cpt.setTypeCompteCourant(true);
 				listCpt.add(cpt);
 				
 			}
@@ -338,8 +340,8 @@ public class DaoImpl implements IDao {
 				CompteCourant cpt = new CompteCourant();
 				cpt.setId(res.getInt(1));
 				cpt.setSolde(res.getDouble(2));
-				cpt.setDate(res.getString(3));
-				cpt.setDecouvert(res.getDouble(4));
+				cpt.setDecouvert(res.getDouble(3));
+				cpt.setTypeCompteCourant(true);
 				;
 				listCpt.add(cpt);
 			}
@@ -384,7 +386,42 @@ public class DaoImpl implements IDao {
 			DbUtil.seDeconnecter(pstat, null, con);
 		}
 	}
-	
+	public CompteEpargne getCompteEpargneByID(int idCompte) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+		ResultSet res = null;
+		CompteEpargne cpt = null;
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "SELECT * FROM comptesepargnes WHERE id=?";
+			pstat = con.prepareStatement(sql);
+			pstat.setInt(1, idCompte);
+			res = pstat.executeQuery();
+			con.commit();
+			cpt = new CompteEpargne();
+			while (res.next()) {
+				cpt.setId(res.getInt(1));
+				cpt.setSolde(res.getDouble(2));
+				cpt.setDate(res.getString(3));
+				cpt.setTaux(res.getDouble(4));
+			}
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+
+			DbUtil.seDeconnecter(pstat, res, con);
+		}
+		return cpt;
+	}
 	
 	public List<CompteEpargne> allCompteEpargneByClientId(int id){
 		PreparedStatement pstat = null;
@@ -632,6 +669,7 @@ public class DaoImpl implements IDao {
 		
 	}
 
+<<<<<<< Updated upstream
 	@Override
 	public void upClient(Client clt) {
 		PreparedStatement pstat = null;
@@ -647,6 +685,122 @@ public class DaoImpl implements IDao {
 			pstat.setString(4, clt.getAdresse());
 			pstat.setInt(5, clt.getId());
 
+=======
+
+
+	@Override
+	public void moneyWithdrawCompteCourant(int idCompte, double montant) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+		Compte cpt;
+		cpt = getCompteCourantByID(idCompte);
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "UPDATE comptescourants SET solde=? WHERE id=?";
+			pstat = con.prepareStatement(sql);
+			pstat.setDouble(1, cpt.getSolde()+montant);
+			pstat.setDouble(2, idCompte);
+			pstat.executeUpdate();
+			con.commit();
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DbUtil.seDeconnecter(pstat, null, con);
+		}
+		
+	}
+
+
+
+	@Override
+	public void moneyWithdrawCompteEpargne(int idCompte, double montant) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+		Compte cpt;
+		cpt = getCompteEpargneByID(idCompte);
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "UPDATE comptesepargnes SET solde=? WHERE id=?";
+			pstat = con.prepareStatement(sql);
+			pstat.setDouble(1, cpt.getSolde()+montant);
+			pstat.setInt(2, idCompte);
+			pstat.executeUpdate();
+			con.commit();
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DbUtil.seDeconnecter(pstat, null, con);
+		}
+		
+	}
+
+
+
+	@Override
+	public void moneyPayCompteCourant(int idCompte, double montant) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+		Compte cpt;
+		cpt = getCompteCourantByID(idCompte);
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "UPDATE comptescourants SET solde=? WHERE id=?";
+			pstat = con.prepareStatement(sql);
+			pstat.setDouble(1, cpt.getSolde()-montant);
+			pstat.setDouble(2, idCompte);
+			pstat.executeUpdate();
+			con.commit();
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DbUtil.seDeconnecter(pstat, null, con);
+		}
+		
+	}
+
+
+
+	@Override
+	public void moneyPayCompteEpargne(int idCompte, double montant) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+		Compte cpt;
+		cpt = getCompteEpargneByID(idCompte);
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "UPDATE comptesepargnes SET solde=? WHERE id=?";
+			pstat = con.prepareStatement(sql);
+			pstat.setDouble(1, cpt.getSolde()-montant);
+			pstat.setDouble(2, idCompte);
+>>>>>>> Stashed changes
 			pstat.executeUpdate();
 			con.commit();
 			// TODO mututaliser les deux erreurs
