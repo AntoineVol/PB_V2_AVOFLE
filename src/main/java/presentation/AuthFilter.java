@@ -11,10 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class AuthFilter implements javax.servlet.Filter{
+/**
+ * Classe de Filter. Le servlet contient un filtre empechant l'accès aux autres
+ * pages que "index.jsp" tant que l'utilisateur ne s'est pas identifié
+ * 
+ * @author VOLATRON & LENOIR
+ * 
+ *
+ */
+public class AuthFilter implements javax.servlet.Filter {
 	public static final String SESSION_AUTH = "auth";
-	
-	
+
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -22,22 +29,21 @@ public class AuthFilter implements javax.servlet.Filter{
 		if (session.getAttribute(SESSION_AUTH) != null) {
 			// l'utilisateur est authentifié
 			chain.doFilter(request, response);
-		}else {
+		} else {
 			((HttpServletResponse) response).sendError(401, "Veuillez vous identifier");
 		}
 	}
-	
-	
+
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 }

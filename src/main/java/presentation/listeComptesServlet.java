@@ -15,6 +15,16 @@ import domaine.CompteCourant;
 import domaine.CompteEpargne;
 import service.ServiceImpl;
 
+/**
+ * Classe de servlet . Le servlet contient un doGet pour l'affichage de
+ * l'ensemble des comptes d'un client choisi à partir de la liste des clients.
+ * Le servlet contient un doPost pour l'ajout d'un nouveau compte courant ou
+ * epargne
+ * 
+ * @author VOLATRON & LENOIR
+ * 
+ *
+ */
 public class listeComptesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -26,25 +36,29 @@ public class listeComptesServlet extends HttpServlet {
 		ServiceImpl service = new ServiceImpl();
 		String idClient = request.getParameter("idClient");
 		String idCsl = request.getParameter("idCsl");
-		
-		//Supression d'un compte
+
+		// Supression d'un compte
 		String action = "Default";
-		if (request.getParameter("action")!=null) {action=request.getParameter("action");}
-		
-		switch(action) {
-		case "supressionCompteCourant" :
+		if (request.getParameter("action") != null) {
+			action = request.getParameter("action");
+		}
+
+		switch (action) {
+		case "supressionCompteCourant":
 			String idDeleted = request.getParameter("idDeleted");
 			service.deleteCompteCourant(Integer.parseInt(idDeleted));
 			break;
-		case "supressionCompteEpargne" :
+		case "supressionCompteEpargne":
 			String idDeleted2 = request.getParameter("idDeleted");
 			service.deleteCompteEpargne(Integer.parseInt(idDeleted2));
 			break;
-		default:	
+		default:
 		}
 
-		List<CompteCourant> listCompteCourant = new ArrayList<CompteCourant>(service.allCompteCourantByIdClient(Integer.parseInt(idClient)));
-		List<CompteEpargne> listCompteEpargne = new ArrayList<CompteEpargne>(service.allCompteEpargneByIdClient(Integer.parseInt(idClient)));
+		List<CompteCourant> listCompteCourant = new ArrayList<CompteCourant>(
+				service.allCompteCourantByIdClient(Integer.parseInt(idClient)));
+		List<CompteEpargne> listCompteEpargne = new ArrayList<CompteEpargne>(
+				service.allCompteEpargneByIdClient(Integer.parseInt(idClient)));
 
 		maSession.setAttribute("listCompteCourant", listCompteCourant);
 		maSession.setAttribute("listCompteEpargne", listCompteEpargne);
@@ -59,7 +73,6 @@ public class listeComptesServlet extends HttpServlet {
 		ServiceImpl service = new ServiceImpl();
 
 		HttpSession maSession = req.getSession();
-		
 
 		String decouvert = null;
 
@@ -87,14 +100,11 @@ public class listeComptesServlet extends HttpServlet {
 			cep.setTaux(Double.parseDouble(taux));
 			service.createCompteEpargne(cep, clt);
 		}
-		
-		
+
 		maSession.setAttribute("idCsl", idCsl);
-		//maSession.setAttribute("listCompteCourant", listCompteCourant);
-		//maSession.setAttribute("listCompteEpargne", listCompteEpargne);
-		
-		
-		
+		// maSession.setAttribute("listCompteCourant", listCompteCourant);
+		// maSession.setAttribute("listCompteEpargne", listCompteEpargne);
+
 		resp.sendRedirect(
 				this.getServletContext().getContextPath() + "/listeComptes?idClient=" + idClient + "&idCsl=" + idCsl);
 	}

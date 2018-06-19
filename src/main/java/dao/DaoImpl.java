@@ -32,7 +32,7 @@ public class DaoImpl implements IDao {
 
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -60,7 +60,7 @@ public class DaoImpl implements IDao {
 			pstat.executeUpdate();
 
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -98,7 +98,7 @@ public class DaoImpl implements IDao {
 				clt.setMail(res.getString(4));
 				clt.setAdresse(res.getString(5));
 			}
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -139,7 +139,7 @@ public class DaoImpl implements IDao {
 
 				listClt.add(clt);
 			}
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -169,7 +169,7 @@ public class DaoImpl implements IDao {
 			pstat.setInt(3, clt.getId());
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -200,7 +200,7 @@ public class DaoImpl implements IDao {
 
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -226,7 +226,7 @@ public class DaoImpl implements IDao {
 			pstat.setInt(1, id);
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -264,7 +264,7 @@ public class DaoImpl implements IDao {
 				cpt.setDecouvert(res.getDouble(4));
 				cpt.setTypeCompteCourant(true);
 			}
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -304,7 +304,7 @@ public class DaoImpl implements IDao {
 				listCpt.add(cpt);
 				
 			}
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			
@@ -345,7 +345,7 @@ public class DaoImpl implements IDao {
 				;
 				listCpt.add(cpt);
 			}
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -372,7 +372,7 @@ public class DaoImpl implements IDao {
 			pstat.setInt(1, id);
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -406,7 +406,7 @@ public class DaoImpl implements IDao {
 				cpt.setDate(res.getString(3));
 				cpt.setTaux(res.getDouble(4));
 			}
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -444,7 +444,7 @@ public class DaoImpl implements IDao {
 				cpt.setTaux(res.getDouble(3));
 				listCpt.add(cpt);
 			}
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -478,7 +478,7 @@ public class DaoImpl implements IDao {
 			if (res.next()) {
 				return true;
 			}
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -514,7 +514,7 @@ public class DaoImpl implements IDao {
 				return csl;
 			}
 			;
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -549,7 +549,7 @@ public class DaoImpl implements IDao {
 				csl.setNom(res.getString(3));
 			}
 			
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -582,7 +582,7 @@ public class DaoImpl implements IDao {
 			pstat.setInt(3, clt.getId());
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -614,7 +614,7 @@ public class DaoImpl implements IDao {
 			pstat.setInt(5, clt.getId());
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -645,7 +645,7 @@ public class DaoImpl implements IDao {
 			pstat.setDouble(2, idCompte);
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -660,8 +660,6 @@ public class DaoImpl implements IDao {
 		}
 		
 	}
-
-
 
 	@Override
 	public void moneyWithdrawCompteEpargne(int idCompte, double montant) {
@@ -678,7 +676,7 @@ public class DaoImpl implements IDao {
 			pstat.setInt(2, idCompte);
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -711,7 +709,7 @@ public class DaoImpl implements IDao {
 			pstat.setDouble(2, idCompte);
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -744,7 +742,7 @@ public class DaoImpl implements IDao {
 			pstat.setDouble(2, idCompte);
 			pstat.executeUpdate();
 			con.commit();
-			// TODO mututaliser les deux erreurs
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

@@ -12,6 +12,16 @@ import domaine.Client;
 import domaine.Conseille;
 import service.ServiceImpl;
 
+/**
+ * Classe de servlet pour l'edition d'un client. 
+ * Le servlet contient un doGet pour le diriger vers
+ * la jsp "clientEdition.jsp" Le servlet contient un doPost pour le diriger vers la
+ * jsp "listeClients.jsp" après avoir mis à jour la base de donnée
+ * 
+ * @author VOLATRON & LENOIR
+ * 
+ *
+ */
 public class EditionClientServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;

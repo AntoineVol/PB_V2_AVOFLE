@@ -3,7 +3,6 @@ package service;
 import java.util.List;
 
 import domaine.Client;
-import domaine.Compte;
 import domaine.CompteCourant;
 import domaine.CompteEpargne;
 import domaine.Conseille;
@@ -16,9 +15,27 @@ import domaine.Conseille;
 public interface IService {
 	
 
+	/**
+	 * Methode utilisée pour la création en base de donnée d'un client attaché au conseillé identifié
+	 * @param clt Client à créer
+	 * @param csl Conseillé du client
+	 */
 	public void createClient(Client clt, Conseille csl);
+	/**
+	 * Methode utilisée pour la modification en base de donnée d'un client
+	 * @param clt Client à modifier
+	 */
 	public void upClient(Client clt);
+	/**
+	 * Methode utilisée pour la suppression en base de donnée d'un client à partir de son id
+	 * @param id id du client à supprimer
+	 */
 	public void deleteClient(int id);
+	/**
+	 * Methode retournant un client à partir de son id
+	 * @param id id du client à retourner 
+	 * @return Client
+	 */
 	public Client getClientByID(int id);
 	public List<Client> allClient(int idConseille);
 	

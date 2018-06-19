@@ -65,10 +65,7 @@
 	</nav>
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
-		<a href="${listeClientsUrl}${idCsl}" class="col-sm-3">Liste des Clients</a> <a
-			id="ListeCompteColor" href="${listeComptesUrl}" class="col-sm-3">Liste
-			des comptes</a> <a href="${virementsUrl}" class="col-sm-3">Virements
-			compte à compte</a>
+		<a href="${listeClientsUrl}${idCsl}" class="col-sm-3">Liste des Clients</a>
 	</nav>
 
 	<%-- LISTE DES COMPTES D'UN CLIENTS --%>
@@ -106,11 +103,11 @@
 					<div class="form-row">
 						<div class="col">
 							<input type="number" class="form-control" placeholder="Solde"
-								name="solde" id="solde" min="0">
+								name="solde" id="solde" min="0" required>
 						</div>
 						<div class="col">
 							<input type="number" class="form-control" placeholder="Découvert"
-								name="decouvert" id="decouvert" min="0">
+								name="decouvert" id="decouvert" min="0" required>
 						</div>
 						<div class="col">
 							<button type="submit" class="btn btn-primary">Créer</button>
@@ -152,11 +149,11 @@
 					<div class="form-row">
 						<div class="col">
 							<input type="number" class="form-control" placeholder="Solde"
-								name="solde" id="solde" min="0">
+								name="solde" id="solde" min="0" required>
 						</div>
 						<div class="col">
 							<input type="number" class="form-control" placeholder="taux"
-								name="taux" id="taux" min="0">
+								name="taux" id="taux" min="0" required>
 						</div>
 						<div class="col">
 							<button type="submit" class="btn btn-primary">Créer</button>

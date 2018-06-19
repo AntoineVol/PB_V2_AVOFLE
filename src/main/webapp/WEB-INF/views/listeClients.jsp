@@ -130,20 +130,20 @@
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" placeholder="Nom"
-						name="nomNouveauClient" id="nomNouveauClient">
+						name="nomNouveauClient" id="nomNouveauClient" required>
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" placeholder="Prenom"
-						name="prenomNouveauClient" id="prenomNouveauClient">
+						name="prenomNouveauClient" id="prenomNouveauClient" required>
 				</div>
 				<div class="col">
 					<input type="email" class="form-control"
 						placeholder="mail@gmail.com" name="mailNouveauClient"
-						id="mailNouveauClient">
+						id="mailNouveauClient" required>
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" placeholder="adresse"
-						name="adresseNouveauClient" id="adresseNouveauClient">
+						name="adresseNouveauClient" id="adresseNouveauClient" required>
 				</div>
 				<div class="col">
 					<button type="submit" class="btn btn-primary">Créer</button>

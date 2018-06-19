@@ -118,7 +118,7 @@
 
 						<div class="form-group">
 							<label for="debiter">Compte à debiter</label> <select
-								class="form-control" name="debiter" id="Debiter">
+								class="form-control" name="debiter" id="Debiter" required>
 								<c:forEach var="compte" items="${listCompte}">
 									<option value="${compte.id}##${compte.typeCompteCourant}">Id
 										: ${compte.id} - Solde : ${compte.solde}</option>
@@ -127,7 +127,7 @@
 						</div>
 						<div class="form-group col">
 							<label for="crediter">Compte à debiter</label> <select
-								class="form-control" name="crediter" id="crediter">
+								class="form-control" name="crediter" id="crediter" required>
 								<c:forEach var="compte" items="${listCompte}">
 									<option value="${compte.id}##${compte.typeCompteCourant}">Id
 										: ${compte.id} - Solde : ${compte.solde}</option>
@@ -137,7 +137,7 @@
 						<div class="form-group col">
 							<label for="montant">Montant</label> <input type="number"
 								class="form-control" placeholder="montant" name="montant"
-								id="montant" min="0">
+								id="montant" min="0" required>
 						</div>
 						<div class="form-group col">
 							<button type="submit" class="btn btn-primary">Effectuer

@@ -8,17 +8,22 @@
 <meta charset="UTF-8">
 <%-- <%=request.getContextPath()%> --%>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css" />
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/index.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <title>ProxiBanque</title>
 </head>
 <body>
 	<!-- LISTE DES URLs -->
-	<c:url value="/listeClients" var="listeClientsUrl" />
+	<c:url value="/listeClients?idConseille=" var="listeClientsUrl" />
 	<c:url value="/listeComptes?idClient=" var="listeComptesUrl" />
 	<c:url value="/virements" var="virementsUrl" />
 	<c:url value="/clientEdition?idClient=" var="clientEditionUrl" />
@@ -28,9 +33,11 @@
 	<nav class="navbar fixed-top navbar-dark bg-dark">
 		<div class="col-md-2">
 			<div class="navbar-brand">
-				<img name="logo"
-				src="${pageContext.request.contextPath}/images/logo-banque.jpg"
-				alt="LOGO">
+				<a id="ListeClientColor" href="${listeClientsUrl}${idCsl}"
+					class="col-sm-3"> <img name="logo"
+					src="${pageContext.request.contextPath}/images/logo-banque.jpg"
+					alt="LOGO"></a>
+
 			</div>
 		</div>
 		<div class="col-md-6 d-flex justify-content-center align-items-center">
@@ -58,9 +65,8 @@
 	</nav>
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
-		<a id="ListeClientColor" href="${listeClientsUrl}" class="col-sm-3">Liste
-			des Clients</a><a href="${virementsUrl}" class="col-sm-3">Virements
-			compte à compte</a>
+		<a id="ListeClientColor" href="${listeClientsUrl}${idCsl}"
+			class="col-sm-3">Liste des Clients</a>
 	</nav>
 
 	<!-- LISTING DES CLIENTS -->
@@ -79,13 +85,13 @@
 				</tr>
 			</thead>
 			<tbody>
-					<tr>
-						<td>${client.id}</td>
-						<td>${client.nom}</td>
-						<td>${client.prenom}</td>
-						<td>${client.mail}</td>
-						<td>${client.adresse}</td>
-					</tr>
+				<tr>
+					<td>${client.id}</td>
+					<td>${client.nom}</td>
+					<td>${client.prenom}</td>
+					<td>${client.mail}</td>
+					<td>${client.adresse}</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -94,29 +100,31 @@
 			<legend>Modification du client</legend>
 			<div class="form-row">
 				<div class="col">
-					<input type="hidden" class="form-control" value="${idCsl}" name="idCsl" id="idCsl"/>
+					<input type="hidden" class="form-control" value="${idCsl}"
+						name="idCsl" id="idCsl" required/>
 				</div>
 				<div class="col">
-					<input type="hidden" class="form-control" value="${client.id}" name="idClt" id="idClt"/>
+					<input type="hidden" class="form-control" value="${client.id}"
+						name="idClt" id="idClt" required />
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" value="${client.nom}"
-						name="nomModifClient" id="nomModifClient">
+						name="nomModifClient" id="nomModifClient" required>
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" value="${client.prenom}"
-						name="prenomModifClient" id="prenomModifClient">
+						name="prenomModifClient" id="prenomModifClient" required>
 				</div>
 				<div class="col">
-					<input type="email" class="form-control" value="${client.mail}" 
-					name="mailModifClient"	id="mailModifClient">
+					<input type="email" class="form-control" value="${client.mail}"
+						name="mailModifClient" id="mailModifClient" required>
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" value="${client.adresse}"
-						name="adresseModifClient" id="adresseModifClient">
+						name="adresseModifClient" id="adresseModifClient" required>
 				</div>
 				<div class="col">
-					<button type="submit" class="btn btn-primary">Modifier</button>
+					<button type="submit" class="btn btn-primary" required>Modifier</button>
 				</div>
 			</div>
 	</div>
@@ -131,7 +139,8 @@
 	<nav class="navbar fixed-bottom navbar-dark bg-dark">
 		<footer class="container">
 			<p>
-				<font color="white"> 2018 © ProxiBanque. Tous droits réservés. </font>
+				<font color="white"> 2018 © ProxiBanque. Tous droits
+					réservés. </font>
 			</p>
 		</footer>
 	</nav>

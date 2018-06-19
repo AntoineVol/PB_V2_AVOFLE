@@ -10,6 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import domaine.Conseille;
 import service.ServiceImpl;
 
+/**
+ * Classe de servlet initial. Le servlet contient un doGet pour le diriger vers
+ * la jsp "Index.jsp" Le servlet contient un doPost pour le diriger vers la
+ * jsp "listeClients.jsp" si le login/mdp est connu de la base de donnée. Sinon
+ * l'utilisateur est redirigé vers la jsp "AuthFailed.jsp" pour s'identifier à nouveau
+ * 
+ * @author VOLATRON & LENOIR
+ * 
+ *
+ */
 public class IndexServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
