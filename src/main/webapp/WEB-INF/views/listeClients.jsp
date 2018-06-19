@@ -8,16 +8,11 @@
 <meta charset="UTF-8">
 <%-- <%=request.getContextPath()%> --%>
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/index.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"	href="${pageContext.request.contextPath}/css/index.css" />
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <title>ProxiBanque</title>
 </head>
@@ -26,6 +21,7 @@
 	<c:url value="/listeClients" var="listeClientsUrl" />
 	<c:url value="/listeComptes?idClient=" var="listeComptesUrl" />
 	<c:url value="/virements" var="virementsUrl" />
+	<c:url value="/clientEdition?idClient=" var="clientEditionUrl" />
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
@@ -86,15 +82,14 @@
 						<td>${client.prenom}</td>
 						<td>${client.mail}</td>
 						<td>${client.adresse}</td>
-						<td><a data-target="#Editer"><button>
+						<td><a href="${clientEditionUrl}${client.id}&idCsl=${idCsl}"><button>
 									<h7> <font style="font-variant: small-caps;">Edition</font></h7>
 								</button></a></td>
 						<td><a href="${listeComptesUrl}${client.id}&idCsl=${idCsl}"><button>
 									<h7> <font style="font-variant: small-caps;">Liste
 										des comptes</font></h7>
 								</button></a></td>
-						<td><a
-							href="${deleteUrl}${client.id}&action=suppressionClient"><button>
+						<td><a href="${deleteUrl}${client.id}&action=suppressionClient"><button>
 									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
 								</button></a></td>
 

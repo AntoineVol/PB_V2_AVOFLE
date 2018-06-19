@@ -48,38 +48,6 @@ public class DaoImpl implements IDao {
 
 	}
 
-	
-
-	public void upClient(Client c) {
-		PreparedStatement pstat = null;
-		Connection con = null;
-
-		try {
-			con = DbUtil.seConnecter();
-			String sql = "UPDATE clients SET prenom=?,nom=?,mail=?,adresse=? WHERE id=?";
-			pstat = con.prepareStatement(sql);
-			pstat.setString(1, c.getPrenom());
-			pstat.setString(2, c.getNom());
-			pstat.setString(3, c.getMail());
-			pstat.setString(4, c.getAdresse());
-			pstat.executeUpdate();
-			con.commit();
-			// TODO mututaliser les deux erreurs
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		} finally {
-			DbUtil.seDeconnecter(pstat, null, con);
-		}
-
-	}
-
 	public void deleteClient(int id_clt) {
 		PreparedStatement pstat = null;
 		Connection con = null;
@@ -646,6 +614,39 @@ public class DaoImpl implements IDao {
 			pstat.setDouble(1, cep.getSolde());
 			pstat.setDouble(2, cep.getTaux());
 			pstat.setInt(3, clt.getId());
+			pstat.executeUpdate();
+			con.commit();
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DbUtil.seDeconnecter(pstat, null, con);
+		}
+		
+	}
+
+	@Override
+	public void upClient(Client clt) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql_clt = "UPDATE clients SET prenom=?,nom=?,mail=?,adresse=? WHERE id=?";
+			pstat = con.prepareStatement(sql_clt);
+			pstat.setString(1, clt.getPrenom());
+			pstat.setString(2, clt.getNom());
+			pstat.setString(3, clt.getMail());
+			pstat.setString(4, clt.getAdresse());
+			pstat.setInt(5, clt.getId());
+
 			pstat.executeUpdate();
 			con.commit();
 			// TODO mututaliser les deux erreurs

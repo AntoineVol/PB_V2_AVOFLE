@@ -23,6 +23,10 @@
 		<servlet-name>AuthFailed</servlet-name>
 		<servlet-class>presentation.AuthFailed</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>EditionClientServlet</servlet-name>
+		<servlet-class>presentation.EditionClientServlet</servlet-class>
+	</servlet>
 	
 	<!-- Filtre d'URL -->
 	<filter>
@@ -34,6 +38,7 @@
 		<url-pattern>/listeClients</url-pattern>
 		<url-pattern>/listeComptes</url-pattern>
 		<url-pattern>/virements</url-pattern>
+		<url-pattern>/clientEdition</url-pattern>
 	</filter-mapping>
 	
 	<!--  description du pattern d'url -->
@@ -56,6 +61,10 @@
 	<servlet-mapping>
 		<servlet-name>AuthFailed</servlet-name>
 		<url-pattern>/AuthFailed</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EditionClientServlet</servlet-name>
+		<url-pattern>/clientEdition</url-pattern>
 	</servlet-mapping>
 
 
