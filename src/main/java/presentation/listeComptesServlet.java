@@ -35,21 +35,16 @@ public class listeComptesServlet extends HttpServlet {
 		case "supressionCompteCourant" :
 			String idDeleted = request.getParameter("idDeleted");
 			service.deleteCompteCourant(Integer.parseInt(idDeleted));
-			//this.getServletContext().getRequestDispatcher("/WEB-INF/views/listeComptes.jsp").forward(request, response);
 			break;
 		case "supressionCompteEpargne" :
 			String idDeleted2 = request.getParameter("idDeleted");
-			service.deleteCompteCourant(Integer.parseInt(idDeleted2));
-			//this.getServletContext().getRequestDispatcher("/WEB-INF/views/listeComptes.jsp").forward(request, response);
-			
-		default:
-			
+			service.deleteCompteEpargne(Integer.parseInt(idDeleted2));
+			break;
+		default:	
 		}
 
 		List<CompteCourant> listCompteCourant = new ArrayList<CompteCourant>(service.allCompteCourantByIdClient(Integer.parseInt(idClient)));
 		List<CompteEpargne> listCompteEpargne = new ArrayList<CompteEpargne>(service.allCompteEpargneByIdClient(Integer.parseInt(idClient)));
-
-		
 
 		maSession.setAttribute("listCompteCourant", listCompteCourant);
 		maSession.setAttribute("listCompteEpargne", listCompteEpargne);

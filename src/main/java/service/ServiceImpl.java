@@ -39,6 +39,11 @@ public class ServiceImpl implements IService {
 
 	// FIXME instancier le conseiller au moment du login
 
+	@Override
+	public void upClient(Client clt) {
+		dao.upClient(clt);
+	}
+
 	public void createClient(Client c, Conseille csl) {
 		dao.createClient(c,csl);
 	}
@@ -77,9 +82,13 @@ public class ServiceImpl implements IService {
 	}
 
 	public void deleteCompteCourant(int id) {
-
 		dao.deleteCompteCourant(id);
+	}
 
+	@Override
+	public void deleteCompteEpargne(int id) {
+		dao.deleteCompteEpargne(id);
+		
 	}
 
 	public CompteCourant getCompteCourantByID(int id) {
@@ -136,12 +145,6 @@ public class ServiceImpl implements IService {
 	}
 	public void moneyPayCompteEpargne(int idCompte, double montant) {
 		dao.moneyPayCompteEpargne(idCompte, montant);
-	}
-
-
-	@Override
-	public void upClient(Client clt) {
-		dao.upClient(clt);
 	}
 
 }

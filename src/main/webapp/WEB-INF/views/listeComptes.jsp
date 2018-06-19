@@ -129,7 +129,7 @@
 							<td>${CompteEpargne.id}</td>
 							<td>${CompteEpargne.solde}</td>
 							<td>${CompteEpargne.taux}</td>
-							<td><a href="${deleteUrl}${CompteEpargne.id}&action=supressionCompteEpargne&idCsl=${idCsl}&idClient=${idClient}"><button>
+							<td><a href="${deleteCompteCourantUrl}${CompteEpargne.id}&action=supressionCompteEpargne&idCsl=${idCsl}&idClient=${idClient}"><button>
 									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
 								</button></a></td>
 						</tr>

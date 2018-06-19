@@ -26,6 +26,7 @@ public interface IService {
 	public void createCompteEpargne(CompteEpargne cep, Client clt);
 	public void upCompteCourant(CompteCourant cpt);
 	public void deleteCompteCourant(int id);
+	public void deleteCompteEpargne(int id);
 	public CompteCourant getCompteCourantByID(int id);
 	public List<CompteCourant> allCompteCourant();
 
