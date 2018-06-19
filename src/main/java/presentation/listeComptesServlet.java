@@ -26,15 +26,35 @@ public class listeComptesServlet extends HttpServlet {
 		ServiceImpl service = new ServiceImpl();
 		String idClient = request.getParameter("idClient");
 		String idCsl = request.getParameter("idCsl");
+		
+		//Supression d'un compte
+		String action = "Default";
+		if (request.getParameter("action")!=null) {action=request.getParameter("action");}
+		
+		switch(action) {
+		case "supressionCompteCourant" :
+			String idDeleted = request.getParameter("idDeleted");
+			service.deleteCompteCourant(Integer.parseInt(idDeleted));
+			//this.getServletContext().getRequestDispatcher("/WEB-INF/views/listeComptes.jsp").forward(request, response);
+			break;
+		case "supressionCompteEpargne" :
+			String idDeleted2 = request.getParameter("idDeleted");
+			service.deleteCompteCourant(Integer.parseInt(idDeleted2));
+			//this.getServletContext().getRequestDispatcher("/WEB-INF/views/listeComptes.jsp").forward(request, response);
+			
+		default:
+			
+		}
 
-		List<CompteCourant> listCompteCourant = new ArrayList<CompteCourant>(
-				service.allCompteCourantByIdClient(Integer.parseInt(idClient)));
-		List<CompteEpargne> listCompteEpargne = new ArrayList<CompteEpargne>(
-				service.allCompteEpargneByIdClient(Integer.parseInt(idClient)));
+		List<CompteCourant> listCompteCourant = new ArrayList<CompteCourant>(service.allCompteCourantByIdClient(Integer.parseInt(idClient)));
+		List<CompteEpargne> listCompteEpargne = new ArrayList<CompteEpargne>(service.allCompteEpargneByIdClient(Integer.parseInt(idClient)));
+
+		
 
 		maSession.setAttribute("listCompteCourant", listCompteCourant);
 		maSession.setAttribute("listCompteEpargne", listCompteEpargne);
 		maSession.setAttribute("idCsl", idCsl);
+		maSession.setAttribute("idClient", idClient);
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/listeComptes.jsp").forward(request, response);
 	}
@@ -72,7 +92,14 @@ public class listeComptesServlet extends HttpServlet {
 			cep.setTaux(Double.parseDouble(taux));
 			service.createCompteEpargne(cep, clt);
 		}
-
+		
+		
+		maSession.setAttribute("idCsl", idCsl);
+		//maSession.setAttribute("listCompteCourant", listCompteCourant);
+		//maSession.setAttribute("listCompteEpargne", listCompteEpargne);
+		
+		
+		
 		resp.sendRedirect(
 				this.getServletContext().getContextPath() + "/listeComptes?idClient=" + idClient + "&idCsl=" + idCsl);
 	}

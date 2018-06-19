@@ -27,6 +27,9 @@
 	<c:url value="/listeComptes" var="listeComptesUrl" />
 	<c:url value="/virements" var="virementsUrl" />
 	<c:url value="/listeComptes?idCompte?solde?decouvert=" var="ajoutCompteUrl" />
+	<c:url value="/listeComptes?idDeleted=" var="deleteCompteCourantUrl" />
+	<c:url value="/listeComptes?idDeleted=" var="deleteCompteEpargneUrl" />
+	
 
 	<!-- Entête avec Logo -->
 	<nav class="navbar fixed-top navbar-dark bg-dark">
@@ -73,6 +76,7 @@
 					<th>Id Compte</th>
 					<th>Solde</th>
 					<th>Decouvert</th>
+					<th>Supression</th>
 				</thead>
 				<tbody>
 					<c:forEach var="CompteCourant" items="${listCompteCourant}">
@@ -80,6 +84,9 @@
 							<td>${CompteCourant.id}</td>
 							<td>${CompteCourant.solde}</td>
 							<td>${CompteCourant.decouvert}</td>
+							<td><a href="${deleteCompteCourantUrl}${CompteCourant.id}&action=supressionCompteCourant&idCsl=${idCsl}&idClient=${idClient}"><button>
+									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
+								</button></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -114,6 +121,7 @@
 					<th>Id Compte</th>
 					<th>Solde</th>
 					<th>Taux</th>
+					<th>Supression</th>
 				</thead>
 				<tbody>
 					<c:forEach var="CompteEpargne" items="${listCompteEpargne}">
@@ -121,6 +129,9 @@
 							<td>${CompteEpargne.id}</td>
 							<td>${CompteEpargne.solde}</td>
 							<td>${CompteEpargne.taux}</td>
+							<td><a href="${deleteUrl}${CompteEpargne.id}&action=supressionCompteEpargne&idCsl=${idCsl}&idClient=${idClient}"><button>
+									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
+								</button></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
