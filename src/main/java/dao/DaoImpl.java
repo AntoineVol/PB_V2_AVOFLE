@@ -237,8 +237,7 @@ public class DaoImpl implements IDao {
 			while (res.next()) {
 				cpt.setId(res.getInt(1));
 				cpt.setSolde(res.getDouble(2));
-				cpt.setDate(res.getString(3));
-				cpt.setDecouvert(res.getDouble(4));
+				cpt.setDecouvert(res.getDouble(3));
 				cpt.setTypeCompteCourant(true);
 			}
 
