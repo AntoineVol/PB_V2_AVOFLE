@@ -26,6 +26,7 @@
 	<c:url value="/listeClients?idConseille=" var="listeClientsUrl" />
 	<c:url value="/listeComptes" var="listeComptesUrl" />
 	<c:url value="/virements" var="virementsUrl" />
+	<c:url value="/logout" var="logoutUrl" />
 
 
 	<!-- Entête avec Logo -->
@@ -37,7 +38,7 @@
 				alt="LOGO">
 			</a>
 		</div>
-		<div class="col-md-8 d-flex justify-content-center align-items-center">
+		<div class="col-md-6 d-flex justify-content-center align-items-center">
 			<h1>
 				<font color="white">ProxiBanque Conseiller Clientèle</font>
 			</h1>
@@ -50,6 +51,13 @@
 			<h5>
 				<font color="green" style="font-variant: small-caps;"><b>Connected</b></font>
 			</h5>
+		</div>
+		<!--  Logo déconnection -->
+		<div class="col-md-2">
+			<div class="navbar-brand">
+				<a href="${logoutUrl}"><img name="logo" src="${pageContext.request.contextPath}/images/Logout.png"
+					alt="Logout"></a>
+			</div>
 		</div>
 	</nav>
 	<!-- </header> -->

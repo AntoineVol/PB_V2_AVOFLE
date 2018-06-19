@@ -27,6 +27,10 @@
 		<servlet-name>EditionClientServlet</servlet-name>
 		<servlet-class>presentation.EditionClientServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>logoutServlet</servlet-name>
+		<servlet-class>presentation.logoutServlet</servlet-class>
+	</servlet>
 	
 	<!-- Filtre d'URL -->
 	<filter>
@@ -39,6 +43,7 @@
 		<url-pattern>/listeComptes</url-pattern>
 		<url-pattern>/virements</url-pattern>
 		<url-pattern>/clientEdition</url-pattern>
+		<url-pattern>/logout</url-pattern>
 	</filter-mapping>
 	
 	<!--  description du pattern d'url -->
@@ -65,6 +70,10 @@
 	<servlet-mapping>
 		<servlet-name>EditionClientServlet</servlet-name>
 		<url-pattern>/clientEdition</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>logoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 
 

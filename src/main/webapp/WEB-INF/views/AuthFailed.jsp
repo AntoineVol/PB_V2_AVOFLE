@@ -27,7 +27,6 @@
 	<!-- LISTE DES URLs -->
 	<c:url value="/listeClients" var="listeClientsUrl" />
 
-
 	<!-- Entête avec Logo -->
 	<header class="container-fluid">
 		<nav class="navbar fixed-top navbar-dark bg-dark">
