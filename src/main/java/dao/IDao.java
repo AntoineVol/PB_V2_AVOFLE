@@ -19,7 +19,7 @@ public interface IDao {
 	
 	public void createCompteCourant(CompteCourant cpt, Client clt);
 	public void createCompteEpargne(CompteEpargne cep, Client clt);
-	public void upCompteCourant(CompteCourant c);
+
 	public void deleteCompteCourant(int id);
 	public CompteCourant getCompteCourantByID(int id);
 	public List<CompteCourant> allCompteCourant();

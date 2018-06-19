@@ -186,35 +186,7 @@ public class DaoImpl implements IDao {
 	}
 
 
-	public void upCompteCourant(CompteCourant c) {
-		PreparedStatement pstat = null;
-		Connection con = null;
 
-		try {
-			con = DbUtil.seConnecter();
-			String sql = "UPDATE comptescourants SET solde=?,decouvert=? WHERE id=?";
-			pstat = con.prepareStatement(sql);
-			pstat.setDouble(1, c.getSolde());
-			pstat.setDouble(2, c.getDecouvert());
-			pstat.setInt(3, c.getId());
-
-			pstat.executeUpdate();
-			con.commit();
-
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		} finally {
-			DbUtil.seDeconnecter(pstat, null, con);
-		}
-
-	}
 
 	public void deleteCompteCourant(int id) {
 		PreparedStatement pstat = null;

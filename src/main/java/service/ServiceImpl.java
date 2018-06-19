@@ -76,10 +76,6 @@ public class ServiceImpl implements IService {
 
 	}
 
-	public void upCompteCourant(CompteCourant c) {
-		dao.upCompteCourant(c);
-
-	}
 
 	public void deleteCompteCourant(int id) {
 		dao.deleteCompteCourant(id);

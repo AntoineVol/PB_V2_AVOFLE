@@ -34,14 +34,29 @@ public interface IService {
 	/**
 	 * Methode retournant un client à partir de son id
 	 * @param id id du client à retourner 
-	 * @return Client
+	 * @return Client de l'id renseigné
 	 */
 	public Client getClientByID(int id);
+	/**
+	 * Methode retournant tous les clients d'un conseillé enregistrés en base de donnée
+	 * @param idConseille Conseillé dont les clients sont recherchés
+	 * @return Liste de client du conseille
+	 */
 	public List<Client> allClient(int idConseille);
 	
+	/**
+	 * Mehode permettant de créer un nouveau compte courant pour un client 
+	 * @param cpt Compte à créer
+	 * @param clt Client attribué au compte
+	 */
 	public void createCompteCourant(CompteCourant cpt, Client clt);
+	/**
+	 * Mehode permettant de créer un nouveau compte epargne pour un client 
+	 * @param cep Compte à créer
+	 * @param clt Client attribué au compte
+	 */
 	public void createCompteEpargne(CompteEpargne cep, Client clt);
-	public void upCompteCourant(CompteCourant cpt);
+
 	public void deleteCompteCourant(int id);
 	public void deleteCompteEpargne(int id);
 	public CompteCourant getCompteCourantByID(int id);
