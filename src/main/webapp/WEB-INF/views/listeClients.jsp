@@ -23,7 +23,7 @@
 </head>
 <body>
 	<!-- LISTE DES URLs -->
-	<c:url value="/listeClients" var="listeClientsUrl" />
+	<c:url value="/listeClients?idConseille=" var="listeClientsUrl" />
 	<c:url value="/listeComptes?idClient=" var="listeComptesUrl" />
 	<c:url value="/virements?idClient=" var="virementsUrl" />
 	<c:url value="/clientEdition?idClient=" var="clientEditionUrl" />
@@ -56,7 +56,7 @@
 	</nav>
 	<!-- </header> -->
 	<nav name="tabsHorizontales" class="navbar navbar-dark bg-dark">
-		<a id="ListeClientColor" href="${listeClientsUrl}" class="col-sm-3">Liste
+		<a id="ListeClientColor" href="${listeClientsUrl}${idCsl}" class="col-sm-3">Liste
 			des Clients</a>
 	</nav>
 
