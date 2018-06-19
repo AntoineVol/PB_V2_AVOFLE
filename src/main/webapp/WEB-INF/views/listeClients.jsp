@@ -100,7 +100,7 @@
 									<h7> <font style="font-variant: small-caps;">Virements</font></h7>
 								</button></a></td>
 						<td><a
-							href="${deleteUrl}${client.id}&action=suppressionClient">
+							href="${deleteUrl}${client.id}&idConseille=${idCsl}&action=suppressionClient">
 								<button>
 									<h7> <font style="font-variant: small-caps;">Suppression</font></h7>
 								</button>
