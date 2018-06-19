@@ -60,7 +60,7 @@
 			compte à compte</a>
 	</nav>
 
-	<!-- LISTE DES COMPTES D'UN CLIENTS -->
+	<%-- LISTE DES COMPTES D'UN CLIENTS --%>
 	<div class="container-fluid">
 		<h4>
 			<b>Liste des comptes du client ${client.id}</b>
@@ -90,18 +90,18 @@
 					<legend>Nouveau Compte Courant</legend>
 					<div class="form-row">
 						<div class="col">
-							<input type="hidden" class="form-control" value=${idCsl} name="idCsl" id="idCsl "/>
-						</div>
-						<div class="col">
 							<input type="number" class="form-control" placeholder="Solde"
 								name="solde" id="solde" min="0">
 						</div>
 						<div class="col">
 							<input type="number" class="form-control" placeholder="Découvert"
-								name="decouvert" id="decouvert">
+								name="decouvert" id="decouvert" min="0">
 						</div>
 						<div class="col">
 							<button type="submit" class="btn btn-primary">Créer</button>
+						</div>
+						<div class="col">
+							<input type="hidden" class="form-control" value=${idCsl} name="idCsl" id="idCsl "/>
 						</div>
 					</div>
 				</form>
@@ -125,6 +125,29 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			
+		<%-- Form Création nouveau compte Epargne --%>
+			<div class="container-fluid">
+				<form method="post">
+					<legend>Nouveau Compte Epargne</legend>
+					<div class="form-row">
+						<div class="col">
+							<input type="number" class="form-control" placeholder="Solde"
+								name="solde" id="solde" min="0">
+						</div>
+						<div class="col">
+							<input type="number" class="form-control" placeholder="taux"
+								name="taux" id="taux" min="0">
+						</div>
+						<div class="col">
+							<button type="submit" class="btn btn-primary">Créer</button>
+						</div>
+						<div class="col">
+							<input type="hidden" class="form-control" value=${idCsl} name="idCsl" id="idCsl "/>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 	<!-- BAS DE PAGE -->

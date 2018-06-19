@@ -42,7 +42,6 @@ public class ServiceImpl implements IService {
 
 	public void createClient(Client c, Conseille csl) {
 		dao.createClient(c,csl);
-
 	}
 
 	public void upClient(Client c) {
@@ -72,8 +71,7 @@ public class ServiceImpl implements IService {
 	}
 
 	public void createCompteCourant(CompteCourant cpt, Client clt) {
-		// TODO Recupérer un client avec les infos du front
-		// TODO Créer un compte à partir du front
+
 		dao.createCompteCourant(cpt, clt);
 
 	}
@@ -134,6 +132,11 @@ public class ServiceImpl implements IService {
 	
 	public Conseille getConseilleByID(int id) {
 		return dao.getConseilleByID(id);
+	}
+
+	@Override
+	public void createCompteEpargne(CompteEpargne cep, Client clt) {
+		dao.createCompteEpargne(cep, clt);		
 	}
 
 }

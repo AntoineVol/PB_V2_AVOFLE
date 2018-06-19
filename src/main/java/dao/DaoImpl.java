@@ -437,14 +437,11 @@ public class DaoImpl implements IDao {
 				cpt.setId(res.getInt(1));
 				cpt.setSolde(res.getDouble(2));
 				cpt.setTaux(res.getDouble(3));
-				;
 				listCpt.add(cpt);
-				return listCpt;
 			}
 			// TODO mututaliser les deux erreurs
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			return listCpt;
 		} catch (SQLException e) {
 			try {
 				con.rollback();
@@ -452,7 +449,6 @@ public class DaoImpl implements IDao {
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
-			return listCpt;
 		} finally {
 			DbUtil.seDeconnecter(pstat, res, con);
 		}
@@ -633,6 +629,38 @@ public class DaoImpl implements IDao {
 			DbUtil.seDeconnecter(pstat, res, con);
 		}
 		return csl;
+		
+	}
+
+
+
+	@Override
+	public void createCompteEpargne(CompteEpargne cep, Client clt) {
+		PreparedStatement pstat = null;
+		Connection con = null;
+
+		try {
+			con = DbUtil.seConnecter();
+			String sql = "INSERT INTO comptesepargnes (solde,taux,id_client) VALUES (?,?,?)";
+			pstat = con.prepareStatement(sql);
+			pstat.setDouble(1, cep.getSolde());
+			pstat.setDouble(2, cep.getTaux());
+			pstat.setInt(3, clt.getId());
+			pstat.executeUpdate();
+			con.commit();
+			// TODO mututaliser les deux erreurs
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			DbUtil.seDeconnecter(pstat, null, con);
+		}
 		
 	}
 	
