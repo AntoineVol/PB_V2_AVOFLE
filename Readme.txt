@@ -5,42 +5,41 @@ Antoine Volatron et Fabien Lenoir
 ## I_Introduction
 
 La Banque ProxiBanque, la banque proche de ses client.
-L'application ProxiBanqueSI permets aux conseillers de clientèles de se connecter 
-et d'effectuer des actions sur les clients ainsi que leurs comptes associés.
+L'application ProxiBanqueSI permets aux conseillers de clientÃ¨les de se connecter 
+et d'effectuer des actions sur les clients ainsi que leurs comptes associÃ©s.
 
-## II_Fonctionnalités
+## II_FonctionnalitÃ©s
 
-Le Conseiller de clientèle peut : 
-- Créer un client
-- Modifier les informations du client (Nom, Prénom, Mail et Adresse)
+Le Conseiller de clientÃ¨le peut : 
+- CrÃ©er un client
+- Modifier les informations du client (Nom, PrÃ©nom, Mail et Adresse)
 - Lire les informations de ses clients
 - Supprimer un client
-- Afficher les comptes d'un client spécifié
-- Créer des comptes pour un client spécifié
-- Effectuer des virements compte à compte pour un client spécifié
+- Afficher les comptes d'un client spÃ©cifiÃ©
+- CrÃ©er des comptes pour un client spÃ©cifiÃ©
+- Effectuer des virements compte Ã  compte pour un client spÃ©cifiÃ©
 
 ## III_Installation
-
+Les diagrammes de classes et sql sont dans le dossier "Util"
 Pour utiliser ProxiBanqueSI v2.0 : 
 ------ Installer l'application ------
-1) Copier le projet ProxiBanqueV2.jar dans le workspace d'Eclipse.
-2) Ouvrez Eclipse
-3) Importez le projet (File -> Import -> General -> ArchiveFile).
-4) Sélectionner le fichier ProxiBanqueV2.jar
-5) Sélectionner le dossier où importer le fichier
-6) Cliquer sur Finish.
+1) dÃ©ziper dans un dossier le fichier "Proxibanque_V2_AVOFLE.zip"
+2) ouvrir une console
+3) aller jusqu'au dossier source de proxibanque.
+4) taper : mvn clean package 
+6) puis : xcopy /Y /Q target\proxibanque.war S:\apache-tomcat-8.5.31\webapps\proxibanque.war
 
------- Créer la base de donnée MySQL ------
+------ CrÃ©er la base de donnÃ©e MySQL ------
 1) Ouvrir Xampp
 2) Lancer Apache
 3) Lancer MySQL
 4) Lancer le controle Admin de MySQL sur Xampp
 5) Cliquer sur l'onglet "console" de Xampp
-6) taper : "mysql -u root -p" puis tapez [entrée]
-7) Dans le dossier PB_V2_AVOFLE, ouvrir le dossier Util et ouvrez dans un éditeur texte le fichier "CreationDBProxBanque_V2.sql"
-8) Copier l'entièreté du fichier
-9) Dans la console, coller le texte copié.
-10) La base de donnée a été crée dans MySQL.
+6) taper : "mysql -u root -p" puis tapez [entrÃ©e]
+7) Dans le dossier PB_V2_AVOFLE, ouvrir le dossier Util et ouvrez dans un Ã©diteur texte le fichier "CreationDBProxBanque_V2.sql"
+8) Copier l'entiÃ¨retÃ© du fichier
+9) Dans la console, coller le texte copiÃ©.
+10) La base de donnÃ©e a Ã©tÃ© crÃ©e dans MySQL.
 
 ------ Lancer l'application ------
 1) Lancer TomCat "tomcat-8.5.31"
@@ -49,11 +48,11 @@ Pour utiliser ProxiBanqueSI v2.0 :
 
 ## IV_Utilisation
 
-Au démarrage l'application ProxiBanqueV2 affiche une page de connexion.
-Seuls les conseillers de clientèles peuvent se connecter. 
+Au dÃ©marrage l'application ProxiBanqueV2 affiche une page de connexion.
+Seuls les conseillers de clientÃ¨les peuvent se connecter. 
 
-Un login et un mot de passe est demandé.
-Par défaut 2 conseillers de clientèle ont été définis avec 
+Un login et un mot de passe est demandÃ©.
+Par dÃ©faut 2 conseillers de clientÃ¨le ont Ã©tÃ© dÃ©finis avec 
 	- conseiller 1:
 		# login :"admin"			
 		# password "admin"
@@ -61,45 +60,46 @@ Par défaut 2 conseillers de clientèle ont été définis avec
 		# login :"tim"			
 		# password "tim1"
 
-Si vous vous trompez, une page vous demandant de vous connecter avec de bons paramètres d'itentifications apparait. 
+Si vous vous trompez, une page vous demandant de vous connecter avec de bons paramÃ¨tres d'itentifications apparait. 
 		
-A chaque conseiller a été attribué 3 client.
-A chaque client a été créé un nombre de Comptes Epargnes et de Compte Courant aléatoire ainsi que des montant eux aussi aléatoire.
+A chaque conseiller a Ã©tÃ© attribuÃ© 3 client.
+A chaque client a Ã©tÃ© crÃ©Ã© un nombre de Comptes Epargnes et de Compte Courant alÃ©atoire ainsi que des montant eux aussi alÃ©atoire.
     
-=== Une fois identifié ===
+=== Une fois identifiÃ© ===
 
-Une page "Liste des clients" vous liste les clients qui vons sont associés.
-Votre nom et prénom est affiché en haut à droit de l'écran ainsi que le statut "Connecté"
+Une page "Liste des clients" vous liste les clients qui vons sont associÃ©s.
+Votre nom et prÃ©nom est affichÃ© en haut Ã  droit de l'Ã©cran ainsi que le statut "ConnectÃ©"
 
-Plusieurs choix s'offrent à vous :
-	- En renseignant le formulaire qui est apparut sous le tableau de clients, vous pouvez créer un nouveau client.
-		# Une fois le bouton [Créer] cliqué, la page ets mise à jour et le nouveau client apparait dans le tableau.
+Plusieurs choix s'offrent Ã  vous :
+	- En renseignant le formulaire qui est apparut sous le tableau de clients, vous pouvez crÃ©er un nouveau client.
+		# Une fois le bouton [CrÃ©er] cliquÃ©, la page ets mise Ã  jour et le nouveau client apparait dans le tableau.
 		
-    - [Edition] : éditer un client
-		#  Une fois cliqué une nouvelle page apparait vous affichant les caractéristiques du client. 
-		# Il vous est alors possible de modifier ses caractéristiques à partir du formulaire puis de cliquer sur le bouton [Modifier]
+    - [Edition] : Ã©diter un client
+		#  Une fois cliquÃ© une nouvelle page apparait vous affichant les caractÃ©ristiques du client. 
+		# Il vous est alors possible de modifier ses caractÃ©ristiques Ã  partir du formulaire puis de cliquer sur le bouton [Modifier]
 		Vous retournez au menu principal "Liste des Clients"
 		
     - [Liste des comptes] : de lister les comptes d'un client
-		# Une fois cliqué une nouvelle page vous affiche la liste des comptes du clients trié par Commpte Courant et Compte Epargne.
-		# Avec le formulaire il vous est possible de créer un nouveau Compte Courant ou Compte Epargne.
-		# Pour revenir à la liste des clients cliquez sur l'onglet "Liste des Clients" au centre de la page.
+		# Une fois cliquÃ© une nouvelle page vous affiche la liste des comptes du clients triÃ© par Commpte Courant et Compte Epargne.
+		# Avec le formulaire il vous est possible de crÃ©er un nouveau Compte Courant ou Compte Epargne.
+		# Pour revenir Ã  la liste des clients cliquez sur l'onglet "Liste des Clients" au centre de la page.
 		
-	- [Virements] : d'effectuer un virement compte à compte d'un client
-		# Une fois cliqué une nouvelle page vous affiche les différents comptes du client séléctionné
-		# Vous pouvez effectuer des virements comptes à comptes avec le formulaire : 
-			- sélectionner le compte à débiter
-			- sélectionner le compte à créditer
-			- sélectionner le montant
+	- [Virements] : d'effectuer un virement compte Ã  compte d'un client
+		# Vous ne pourrez pas effectuer de virement si le montant dÃ©passe le solde du Compte Courant + son dÃ©couvert autorisÃ©.
+		# Une fois cliquÃ© une nouvelle page vous affiche les diffÃ©rents comptes du client sÃ©lÃ©ctionnÃ©
+		# Vous pouvez effectuer des virements comptes Ã  comptes avec le formulaire : 
+			- sÃ©lectionner le compte Ã  dÃ©biter
+			- sÃ©lectionner le compte Ã  crÃ©diter
+			- sÃ©lectionner le montant
 			- cliquer sur [effectuer le virement]
-			- La page est alors mise à jour.
-		# Pour revenir à la liste des clients cliquez sur l'onglet "Liste des Clients" au centre de la page.
+			- La page est alors mise Ã  jour.
+		# Pour revenir Ã  la liste des clients cliquez sur l'onglet "Liste des Clients" au centre de la page.
 		
 	- [Suppression]	: de supprimer un client
-		- Une fois cliqué, le client est supprimer de la Banque de Donnée.
+		- Une fois cliquÃ©, le client est supprimer de la Banque de DonnÃ©e.
 
-A chaque étape de votre navigation, le bouton [Logout] bleu vous permettra de vous deconnecter et de revenir au menu d'authentification.
+A chaque Ã©tape de votre navigation, le bouton [Logout] bleu vous permettra de vous deconnecter et de revenir au menu d'authentification.
 
 ## V_EVOLUTIONS
-    - Dans de futures versions, l'application pourra proposer à ses acteurs 
-      les fonctionnalités qui ne sont pas présentes à l'heure actuelle.
+    - Dans de futures versions, l'application pourra proposer Ã  ses acteurs 
+      les fonctionnalitÃ©s qui ne sont pas prÃ©sentes Ã  l'heure actuelle.
