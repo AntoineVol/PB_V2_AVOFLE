@@ -8,9 +8,9 @@ import domaine.CompteEpargne;
 import domaine.Conseille;
 
 /**
- * Interface de la couche service
-* @author KHEZNADJI et VOLATRON
- * @version 1.0
+ * Interface de la couche Service
+ * @author VOLATRON & LENOIR
+ *
  */
 public interface IService {
 	

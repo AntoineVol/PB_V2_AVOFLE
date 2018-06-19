@@ -1,5 +1,9 @@
 package domaine;
 
+/**
+ * Classe des génerique des personnes. 
+ * @author LENOIR et VOLATRON
+ */
 public abstract class Personne {
 
 	private String nom;
@@ -10,11 +14,21 @@ public abstract class Personne {
 
 	private String adresse;
 
+	/**
+	 *  Constructeur par defaut
+	 */
 	public Personne() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 *  Constructeur élaboré
+	 * @param nom Nom de la personne
+	 * @param prenom Prenom de la personne
+	 * @param mail Mail de la personne
+	 * @param adresse Adresse de la personne
+	 */
 	public Personne(String nom, String prenom, String mail, String adresse) {
 		super();
 		this.nom = nom;

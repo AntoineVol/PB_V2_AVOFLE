@@ -14,6 +14,11 @@ import domaine.CompteCourant;
 import domaine.CompteEpargne;
 import domaine.Conseille;
 
+/**
+ * Classe implémentant l'interface de la couche DAO
+ * @author VOLATRON & LENOIR
+ *
+ */
 public class DaoImpl implements IDao {
 
 	public void createClient(Client clt, Conseille csl) {

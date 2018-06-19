@@ -1,17 +1,24 @@
 package domaine;
 /**
- * CompteCourant  est la classe repr�sentant le compte courant d'un client de la banque BroxiBanque
- * @author KHEZNADJI et VOLATRON
- * @version 1.0
+ * Classe des comptes courants. Ce sont des comptes qui possèdent un decouvert
+ * @author LENOIR et VOLATRON
  */
 public class CompteCourant extends Compte {
 
 	private double decouvert;
 
+	/**
+	 * Constructeur par defaut
+	 */
 	public CompteCourant() {
 		super();
 	}
 	
+	/**
+	 * Constructeur élaboré
+	 * @param solde Solde à initlialiser lors de la création du compte
+	 * @param dec Decouvert à initlialiser lors de la création du compte
+	 */
 	public CompteCourant(double solde, double dec) {
 		super(solde);
 		this.decouvert = dec;

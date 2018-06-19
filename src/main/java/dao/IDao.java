@@ -7,6 +7,11 @@ import domaine.CompteCourant;
 import domaine.CompteEpargne;
 import domaine.Conseille;
 
+/**
+ * Interface de la couche DAO regissant les méthodes réalisant les requètes SQL
+ * @author VOLATRON & LENOIR
+ *
+ */
 public interface IDao {
 
 	
@@ -77,6 +82,11 @@ public interface IDao {
 	 * @param id id du compte à supprimer
 	 */
 	public void deleteCompteEpargne(int id);
+	/**
+	 *  Methode permettant de recupérer un compte epargne à partir de son id
+	 * @param idCompte id du compte à récuperer
+	 * @return Compte epargne à récuperer
+	 */
 	public CompteEpargne getCompteEpargneByID(int idCompte);
 	/**
 	 * Methode permettant de recupérer tous les comptes epargnes d'un client à partir de son id
@@ -85,9 +95,29 @@ public interface IDao {
 	 */
 	public List<CompteEpargne> allCompteEpargneByClientId(int id);
 	
+	/**
+	 * Methode permettant le versement d'argent un compte courant identifié par son id
+	 * @param idCompte id identifiant le compte
+	 * @param montant Montant à verser sur le compte
+	 */
 	public void moneyWithdrawCompteCourant(int idCompte, double montant);
+	/**
+	 * Methode permettant le versement d'argent un compte epargne identifié par son id
+	 * @param idCompte id identifiant le compte
+	 * @param montant Montant à verser sur le compte
+	 */
 	public void moneyWithdrawCompteEpargne(int idCompte, double montant);
+	/**
+	 * Methode permettant le retrait d'argent un compte courant identifié par son id
+	 * @param idCompte id identifiant le compte
+	 * @param montant Montant à verser sur le compte
+	 */
 	public void moneyPayCompteCourant(int idCompte, double montant);
+	/**
+	 * Methode permettant le retrait d'argent un compte epargne identifié par son id
+	 * @param idCompte id identifiant le compte
+	 * @param montant Montant à verser sur le compte
+	 */
 	public void moneyPayCompteEpargne(int idCompte, double montant);
 	
 	/**

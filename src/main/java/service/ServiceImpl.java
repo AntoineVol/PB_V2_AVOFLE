@@ -11,7 +11,9 @@ import domaine.CompteEpargne;
 import domaine.Conseille;
 
 /**
- * @author Adminl Classe d'implémentation de l'interface IService
+ * Classe implémentant l'interface de la couche service
+ * @author VOLATRON & LENOIR
+ *
  */
 public class ServiceImpl implements IService {	
 	
